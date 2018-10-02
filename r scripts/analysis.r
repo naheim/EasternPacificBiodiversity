@@ -15,8 +15,16 @@ library(maps)
 require(rgdal)
 
 crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection
+bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')
+coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')
 
 load("data files/calCoastObs.RData")
+calCoast$lng <- as.numeric(calCoast$lng)
+calCoast$lat <- as.numeric(calCoast$lat)
+# transform coordinates to spatial objects
+coordinates(calCoast) <- ~ lng + lat
+proj4string(calCoast) <- CRS("+proj=longlat")
+calCoast <- spTransform(calCoast, proj4string(counties))
 
 calCoast <- subset(calCoast, rank == 'species')
 minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))
@@ -38,10 +46,10 @@ counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2
 counties <- spTransform(counties, crswgs84)
 
 # subset individual counties
-sanFrancisco <- counties[counties$NAME == 'San Francisco',]
+bayArea <- counties[is.element(counties$NAME, bayCounties),]
+coastalCounties <- counties[is.element(counties$NAME, coastCounties),]
 
-obsCoords <- data.frame('lng'=as.numeric(calCoast$lng), 'lat'=as.numeric(calCoast$lat))
-# Assignment modified according
-coordinates(obsCoords) <- ~ lng + lat
-# Set the projection of the SpatialPointsDataFrame using the projection of the shapefile
-proj4string(obsCoords) <- proj4string(counties)
+temp <- !is.na(over(calCoast, as(bayArea, "SpatialPolygons")))
+
+plot(coastalCounties)
+points(calCoast[temp,], col='blue', pch=16, cex=0.5)
