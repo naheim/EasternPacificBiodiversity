@@ -56,8 +56,8 @@ formatColumns <- function(x, drops) {
 	
 	# lat/lng
 	temp <- strsplit(x$location, ",")
-	x$lng <- sapply(temp, function(x){return(x[2])})
-	x$lat <- sapply(temp, function(x){return(x[1])})
+	x$lng <- as.numeric(sapply(temp, function(x){return(x[2])}))
+	x$lat <- as.numeric(sapply(temp, function(x){return(x[1])}))
 	
 	x <- x[,!is.element(colnames(x), c('observed_on_details','taxon','place_ids','user','location'))]
 	return(x)
