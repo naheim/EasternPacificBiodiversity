@@ -1,319 +1,3 @@
-pbdbUri <- paste("http://paleobiodb.org/data1.2/occs/list.tsv?base_name=Metazoa&interval=",geoPeriods$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub", sep="")
-temp <- read.delim(pbdbUri)
-pbdbUri
-pbdbUri <- paste("http://paleobiodb.org/data1.2/occs/list.tsv?base_name=Metazoa&interval=",geoPeriods$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep="")
-temp <- read.delim(pbdbUri)
-URLencode(pbdbUri)
-pbdbUri <- paste("http://paleobiodb.org/data1.2/occs/list.tsv?base_name=Animalia&interval=",geoPeriods$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep="")
-temp <- read.delim(pbdbUri)
-pbdbUri <- paste("https://paleobiodb.org/data1.2/occs/list.tsv?base_name=Animalia&interval=",geoPeriods$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep="")
-temp <- read.delim(pbdbUri)
-i
-pbdbUri
-pbdbUri <- paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Metazoa&interval=",geoPeriods$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub", sep="")#
-	temp <- read.delim(pbdbUri)
-pbdbUri <- paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Metazoa","&show=paleoloc,classext&idreso=lump_gensub", sep="")#
-	temp <- read.delim(pbdbUri)
-pbdbUri <- paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records","&show=paleoloc,classext&idreso=lump_gensub", sep="")#
-	temp <- read.delim(pbdbUri)
-pbdb <- data.frame()#
-geoIntervals <- read.delim("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&scale_level=2&max_ma=541")#
-#
-for(i in 1:length(geoIntervals)) {#
-	pbdbUri <- paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep="")#
-	temp <- read.delim(pbdbUri)#
-	pbdb <- rbind(pbdb, ints)#
-}
-i
-tmep
-temp
-geoIntervals <- read.delim("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&scale_level=1&max_ma=541")
-geoIntervals
-geoIntervals <- read.delim("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&max_ma=541")
-geoIntervals
-1:nrow(geoIntervals)
-geoIntervals <- read.delim("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&scale_level=5&max_ma=541")
-1:nrow(geoIntervals)
-pbdb <- data.frame()#
-geoIntervals <- read.delim("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&scale_level=5&max_ma=541")#
-#
-for(i in 1:nrow(geoIntervals)) {#
-	pbdbUri <- paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep="")#
-	temp <- read.delim(pbdbUri)#
-	pbdb <- rbind(pbdb, ints)#
-	print(geoIntervals$interval_name[i])#
-}
-pbdbUri <- URLencode(paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep=""))
-pbdbUri
-pbdbUri <- URLencode(paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep=""))#
-	temp <- read.delim(pbdbUri)#
-	pbdb <- rbind(pbdb, ints)#
-	print(geoIntervals$interval_name[i])
-pbdb <- data.frame()#
-geoIntervals <- read.delim("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&scale_level=5&max_ma=541")#
-#
-for(i in 1:nrow(geoIntervals)) {#
-	pbdbUri <- URLencode(paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep=""))#
-	temp <- read.delim(pbdbUri)#
-	pbdb <- rbind(pbdb, ints)#
-	print(as.character(geoIntervals$interval_name[i])) ## just to keep track in the console#
-}
-nrow(pbdb)
-head(pbdb)
-pbdb <- data.frame()#
-maxAge <- read.delim("https://paleobiodb.org/data1.2/intervals/single.tsv?name=Cambrian")#
-geoIntervals <- read.delim(paste("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&scale_level=4&max_ma=",maxAge$max_ma[1], sep=""))
-geoIntervals
-pbdbUri <- URLencode(paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep=""))#
-	temp <- read.delim(pbdbUri)#
-	pbdb <- rbind(pbdb, temp)#
-	print(as.character(geoIntervals$interval_name[i])) ## just to keep track in the console
-pbdbUri
-geoIntervals
-i <- 7
-pbdbUri <- URLencode(paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep=""))#
-	temp <- read.delim(pbdbUri)#
-	pbdb <- rbind(pbdb, temp)
-nrow(temp)
-pbdb <- data.frame()#
-maxAge <- read.delim("https://paleobiodb.org/data1.2/intervals/single.tsv?name=Cambrian")#
-geoIntervals <- read.delim(paste("https://paleobiodb.org/data1.2/intervals/list.tsv?scale=1&scale_level=4&max_ma=",maxAge$max_ma[1], sep=""))#
-#
-for(i in 1:nrow(geoIntervals)) {#
-	pbdbUri <- URLencode(paste("https://paleobiodb.org/data1.2/occs/list.tsv?all_records&base_name=Animalia&interval=",geoIntervals$interval_name[i],"&show=paleoloc,classext&idreso=lump_gensub&limit=all", sep=""))#
-	temp <- read.delim(pbdbUri)#
-	pbdb <- rbind(pbdb, temp)#
-	print(as.character(geoIntervals$interval_name[i])) ## just to keep track in the console#
-}
-nrow(pbdb)
-head(pbdb)
-length(uniqeu(pbdb[,1]))
-length(unique(pbdb[,1]))
-load("/Volumes/Blastoid/noelheim_data/Desktop/pbdbAnimals.Rdata")
-nrow(pbdb)
-head(pbdb)
-length(unique(pbdb[,1]))
-nrow(unique(pbdb))
-library(velociraptor)
-library(velociraptr)
-? velociraptr
-cleanTaxonomy
-nrow(subset(pbdb, genus == ""))
-nrow(subset(pbdb, is.na(genus)))
-?cleanTaxonomy'
-?cleanTaxonomy
-constrainAges
-citation(;'velociraptr')
-citation('velociraptr')
-head(pbdb)
-? constrainAges
-nrow(pbdb)
-pbdb <- unique(pbdb) # eliminate duplicates from poorly resolved genera#
-pbdb <- subset(pbdb, !is.na(genus)) # make sure there are not taxa without genus names#
-pbdb <- constrainAges(pbdb, geoIntervals)
-nrow(pbdb)
-head(geoIntervals)
-constrainAges <- function (Data, Timescale) #
-{#
-    Data[, "early_interval"] <- as.character(Data[, "early_interval"])#
-    Data[, "late_interval"] <- as.character(Data[, "late_interval"])#
-    for (i in 1:nrow(Timescale)) {#
-        EarlyPos <- which(Data[, "max_ma"] > Timescale[i, "t_age"] & #
-            Data[, "max_ma"] <= Timescale[i, "b_age"])#
-        Data[EarlyPos, "early_interval"] <- as.character(Timescale[i, #
-            "interval_name"])#
-        LatePos <- which(Data[, "min_ma"] >= Timescale[i, "t_age"] & #
-            Data[, "min_ma"] < Timescale[i, "b_age"])#
-        Data[LatePos, "late_interval"] <- as.character(Timescale[i, #
-            "interval_name"])#
-    }#
-    Data <- Data[Data[, "early_interval"] == Data[, "late_interval"], #
-        ]#
-    return(Data)#
-}
-load("/Volumes/Blastoid/noelheim_data/Desktop/pbdbAnimals.Rdata")
-pbdb <- unique(pbdb) # eliminate duplicates from poorly resolved genera#
-pbdb <- subset(pbdb, !is.na(genus)) # make sure there are not taxa without genus names#
-pbdb <- constrainAges(pbdb, geoIntervals) # e
-nrow(pbdb)
-load("/Volumes/Blastoid/noelheim_data/Desktop/pbdbAnimals.Rdata")
-nrow(pbdb)
-pbdb <- unique(pbdb) # eliminate duplicates from poorly resolved genera
-nrow(pbdb)
-pbdb <- subset(pbdb, !is.na(genus)) # make sure there are not taxa without genus names
-nrow(pbdb)
-constrainAges <- function (Data, Timescale) #
-{#
-    Data[, "early_interval"] <- as.character(Data[, "early_interval"])#
-    Data[, "late_interval"] <- as.character(Data[, "late_interval"])#
-    for (i in 1:nrow(Timescale)) {#
-        EarlyPos <- which(Data[, "max_ma"] > Timescale[i, "min_ma"] & Data[, "max_ma"] <= Timescale[i, "max_ma"])#
-        Data[EarlyPos, "early_interval"] <- as.character(Timescale[i, "interval_name"])#
-        LatePos <- which(Data[, "min_ma"] >= Timescale[i, "min_ma"] &  Data[, "min_ma"] < Timescale[i, "max_ma"])#
-        Data[LatePos, "late_interval"] <- as.character(Timescale[i,"interval_name"])#
-    }#
-    Data <- Data[Data[, "early_interval"] == Data[, "late_interval"], ]#
-    return(Data)#
-}
-pbdb <- constrainAges(pbdb, geoIntervals) # eliminate occurrences not constrained to a single age
-nrow(pbdb)
-q()
-8000/135
-8000/135*3
-exp(5)
-log10(500)
-log10(1000)
-log10(10000)
-log10(100000)
-q()
-6^2
-6^(2/3)
-(6^2)^(1/3)
-noam <- read.csv("https://macrostrat.org/api/units?interval_name=Phanerozoic&response=long&format=csv", header=TRUE)
-nrow(noam)
-colnanmes(noam)
-colnames(noam)
-library(jsonlite)
-?fromjson
-?jsonlite
-noam <- fromJSON("https://macrostrat.org/api/units?interval_name=Phanerozoic&response=long&format=json", header=TRUE)
-noam <- fromJSON("https://macrostrat.org/api/units?interval_name=Phanerozoic&response=long&format=json")
-head(noam)
-head(noam$success$data)
-noam <- read.csv("https://macrostrat.org/api/units?interval_name=Phanerozoic&response=long&format=csv&project_id=1", header=TRUE)
-liths <- read.csv("https://macrostrat.org/api/defs/lithologies?all&format=csv", header=TRUE)
-head(liths)
-liths
-table(liths$lith_type)
-table(liths$type)
-table(liths$class)
-nrow(noam)
-length(levels(noam$lith))
-head(noam$lith)
-noam <- read.csv("https://macrostrat.org/api/units?interval_name=Phanerozoic,Pliocene&response=long&format=csv&project_id=1", header=TRUE)
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages", header=TRUE)
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
-timescale
-timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&?late_age=2.588&early_age=541", header=TRUE)
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&late_age=2.588&early_age=541", header=TRUE)
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
-timescale
-timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
-timescale
-12.99*36
-9.99*36
-?predict
-10.5/89
-?scale
-head(noam)
-nrow(subset(noam, is.na(strat_name_id)))
-nrow(subset(noam, is.na(strat_name_id)))/nrow(noam)
-range(subset(noam, is.na(strat_name_id))$b_age)
-2.9e-3
-2.9e3
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?datainfo&rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-nrow(x)
-head(x)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-head(x)
-nrow(x)
-table(x$measurement)
-length(unique(x$specimen_no))
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=full", header=T)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class", header=T)
-nrow(x)
-head(x)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=T)
-nrow(x)
-length(unique(x$accepted_name))
-y <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-head(y)
-nrow(y)
-range(y$maxSize)
-range(x$min, na.rm=T)
-range(x$max, na.rm=T)
-head(x)
-table(x$authorizer)
-levels(x$accepted_name)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian,Triassic&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-nrow(permBrachs)
-table(x$authorizer)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Carboniferous,Triassic&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-nrow(permBrachs)
-table(x$authorizer)
-4546+116
-hist(permBrachs$maxAge)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-head(x)
-taply(x$average, x$measurement, max)
-tapply(x$average, x$measurement, max)
-rawData <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
-#
-speciesSizes <- data.frame('maxSize'=tapply(rawData$average, rawData$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE))#
-#
-genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unqiue(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
-genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unique(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
-head(genusSizes)
-nrow(genusSizes)
-tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE)
-head(tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
-head(genusSizes)
-speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
-head(speciesSizes)
-speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
-head(speciesSizes)
-plot(speciesSizes$length, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
-plot(speciesSizes$maxDim, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
-nrow(speciesSizes)
-nrow(subset(speciesSizes, width==maxDim))
-nrow(subset(speciesSizes, width==maxDim))/nrow(speciesSizes)
-tapply(rawData$genus, rawData$accepted_name, max)
-tapply(rawData$genus, rawData$accepted_name, function(x){return(x[1])})
-tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})
-head(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))}))
-speciesSizes <- data.frame('genus'=factor(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
-head(speciesSizes)
-range(speciesSizes$maxDim)
-genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$max_ma, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$min_ma, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
-genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$maxAge, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$minAge, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
-head(genusSizes)
-q()
-4*5
-67000/60/50
-58/40/50
-58000/40/50
-67000/56/50
-58000/41/50
-1334/270
-1334/263
-(1334-26)/263
-(1334-263)/263
-(1334-263)/
-(1334-263)
-240-145
-(240-145)/12
-169-146
-(240-121)/12
-205/8
-244/8
-q()
-?png
-q()
-69.5-58
-(69.5-58)/69.5
-(69.4-58)/69.4
-q()
-## maps#
-mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
-mpas <- spTransform(mpas, crswgs84)
 # set root base for proper file direction#
 init.dir <- getwd()#
 if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
@@ -328,52 +12,67 @@ setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
 #
 library(vegan)#
 library(maps)#
-require(rgdal)#
 #
-crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
-bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')#
-coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
-#
-load("data files/calCoastObs.RData")#
-calCoast$lng <- as.numeric(calCoast$lng)#
-calCoast$lat <- as.numeric(calCoast$lat)#
-# transform coordinates to spatial objects#
-coordinates(calCoast) <- ~ lng + lat#
-proj4string(calCoast) <- CRS("+proj=longlat")#
-calCoast <- spTransform(calCoast, proj4string(counties))#
-#
-calCoast <- subset(calCoast, rank == 'species')#
-minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))#
-sampleMatrix <- table(calCoast$year, calCoast$taxon_id)
-calCoast <- spTransform(calCoast, crswgs84)
-calCoast <- subset(calCoast, rank == 'species')#
-minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))#
-sampleMatrix <- table(calCoast$year, calCoast$taxon_id)
-## maps#
-counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
-counties <- spTransform(counties, crswgs84)#
-#
-## maps#
-mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
-mpas <- spTransform(mpas, crswgs84)
+load("data files/calCoastObs.RData")
+table(calCoast$year)
+head(calCoast)
 map('state','California')
-plot(mpas, add=T, col='red')
-mpas@data
-mpas@data@Type
-mpas@data$Type
-table(mpas@data$Type)
-## maps#
-cal <- readOGR(dsn = "data files/CA_State/", layer = "CA_State_TIGER2016")#
-cal <- spTransform(cal, crswgs84)
-plot(cal)
-map('state','Washington')
-map('state','Washington')
-data(state.map)
-cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
-cal <- spTransform(cal, crswgs84)
-map(cal)
-cal@data
-cal <- cal[cal$NAME == 'California',]#
-cal <- spTransform(cal, crswgs84)
-plot(cal)
+sampleYears <- 2016:2018#
+quartz(height=5, width=15)#
+par(pch=16, mfrow=c(1,3))#
+for(i in 1:3) {#
+	map('state','California')#
+	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==2016], cex=0.5, col='red')#
+}
+sampleYears <- 2016:2018#
+quartz(height=5, width=15)#
+par(pch=16, mfrow=c(1,3))#
+for(i in 1:3) {#
+	map('state','California')#
+	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==sampleYears[i]], cex=0.5, col='red')#
+}
+?rarefy
+min(table(calCoast$year))
+rarecurve(calCoast$taxon_id[calCoast$year==2016], 1, min(table(calCoast$year)))
+rarecurve(calCoast$taxon_id[calCoast$year==2016], 10, min(table(calCoast$year)))
+table(calCoast$rank)
+length(unique(calCoast$taxon_id))
+length(unique(calCoast$name))
+calCoast <- subset(calCoast, rank == 'species')
+minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))
+minDiv
+rarecurve(calCoast$taxon_id[calCoast$year==2016], 10, 754)
+rarecurve(table(calCoast$taxon_id[calCoast$year==2016]), 10, 754)
+sampleMatrix <- table(calCoast$taxon_id, calCoast$year)
+head(sampleMatrix)
+head(BCI)
+data(BCI)
+head(BCI)
+class(BCI)
+sampleMatrix <- table(calCoast$year, calCoast$taxon_id)
+class(sampleMatrix)
+rarefy(sampleMatrix, 400)
+rarefycurve(sampleMatrix, 400)
+rarecurve(sampleMatrix, 1, 700)
+rarecurve(sampleMatrix, 1, 7)
+rarecurve(sampleMatrix, 1)
+x <- rarecurve(sampleMatrix, 1)
+x
+length(x)
+head(x[1])
+class(x)
+names(x)
+class(x[[1]])
+class(x[[2]])
+class(x[[3]])
+length(x[[1]])
+length(x[[2]])
+length(x[[3]])
+x <- rarecurve(sampleMatrix, 1, plot=FALSE)
+x <- rarecurve(sampleMatrix, 1, plot=FALSE)
+dev.off()
+?rarefy
+min(rowSums(sampleMatrix))
+rarefied <- rarecurve(sampleMatrix, 1, sample = min(rowSums(sampleMatrix)))
+head(calCoast)
 q()
