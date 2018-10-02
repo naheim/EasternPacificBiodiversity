@@ -24,7 +24,7 @@ calCoast$lat <- as.numeric(calCoast$lat)
 # transform coordinates to spatial objects
 coordinates(calCoast) <- ~ lng + lat
 proj4string(calCoast) <- CRS("+proj=longlat")
-calCoast <- spTransform(calCoast, proj4string(counties))
+calCoast <- spTransform(calCoast, crswgs84)
 
 calCoast <- subset(calCoast, rank == 'species')
 minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))
@@ -42,8 +42,15 @@ for(i in 1:3) {
 }
 
 ## maps
+cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")
+cal <- cal[cal$NAME == 'California',]
+cal <- spTransform(cal, crswgs84)
+
 counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")
 counties <- spTransform(counties, crswgs84)
+
+mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")
+mpas <- spTransform(mpas, crswgs84)
 
 # subset individual counties
 bayArea <- counties[is.element(counties$NAME, bayCounties),]
