@@ -117,7 +117,7 @@ for(i in 1:ceiling(nameCount/myFactor)) {
 
 
 # add new columns to data frame for taxonomy
-taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe')
+taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe','species')
 calCoast$kingdom <- NA
 calCoast$phylum <- NA
 calCoast$subphylum <- NA
@@ -130,7 +130,9 @@ calCoast$subfamily <- NA
 calCoast$genus <- NA
 calCoast$subgenus <- NA
 calCoast$tribe <- NA
+calCoast$species <- NA
 calCoast$genus_id <- NA
+calCoast$species_id <- NA
 
 # add commas to hierarchy to assist with grepl
 calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
@@ -144,10 +146,12 @@ for(i in 1:nrow(theseTaxa)) {
 	if(theseTaxa$rank[i] == 'genus') {
 		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]
 	}
-	
+	if(theseTaxa$rank[i] == 'species') {
+		calCoast$species_id[matchingObservations] <- theseTaxa$id[i]
+	}
 	# set higher taxon names
 	calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i]] <- theseTaxa$name[i]
-	if(i %% 20 == 0) print(i)
+	if(i %% 20 == 0) print(i*myFactor)
 
 }
 save(calCoast, higherTaxonomy, file="data files/calCoastObs.RData")
