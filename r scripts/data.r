@@ -133,6 +133,7 @@ calCoast$subgenus <- NA
 calCoast$tribe <- NA
 calCoast$genus_id <- NA
 
+print("Merging taxon hierarchy with observations")
 # drop unused taxonomic levels, then loop through each taxon and match to observations
 theseTaxa <- data.frame(subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels)), stringsAsFactors=FALSE)
 for(i in 1:nrow(theseTaxa)) {	
@@ -147,7 +148,7 @@ for(i in 1:nrow(theseTaxa)) {
 	if(i %% 20 == 0) print(i)
 
 }
-#save(calCoast, higherTaxonomy, file="data files/calCoastObs.RData")
+save(calCoast, higherTaxonomy, file="data files/calCoastObs.RData")
 
 
 
