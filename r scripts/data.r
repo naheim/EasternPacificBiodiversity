@@ -12,7 +12,6 @@ setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));
 
 library(jsonlite)
 
-
 ## get list of snapshot cal coast projects
 projNames <- c("Snapshot Cal Coast 2016","Snapshot Cal Coast 2017","Snapshot Cal Coast 2018")
 projects <- fromJSON(URLencode('http://api.inaturalist.org/v1/projects?q=snapshot cal coast&per_page=200'))$results
@@ -45,6 +44,7 @@ formatColumns <- function(x, drops) {
 	x$conservation_status.iucn <- x$taxon$conservation_status.iucn
 	x$conservation_status.geoprivacy <- x$taxon$conservation_status.geoprivacy
 	x$conservation_status.status <- x$taxon$conservation_status.status
+	x$hierarchy <- x$taxon$min_species_ancestry
 	
 	# place_ids
 	x$place_ids <- sapply(x$place_ids, paste, collapse=",")
@@ -93,3 +93,56 @@ for(j in 1:3) {
 }
 nrow(calCoast)
 save(calCoast, file="data files/calCoastObs.RData")
+
+#### Fetch Taxonomy
+taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe')
+calCoast$kingdom <- NA
+calCoast$phylum <- NA
+calCoast$subphylum <- NA
+calCoast$class <- NA
+calCoast$subclass <- NA
+calCoast$order <- NA
+calCoast$suborder <- NA
+calCoast$family <- NA
+calCoast$subfamily <- NA
+calCoast$genus <- NA
+calCoast$subgenus <- NA
+calCoast$tribe <- NA
+calCoast$genus_id <- NA
+
+print("Fetching hierarchies")
+uniqueHierarchies <- unique(calCoast$hierarchy)
+for(i in 1:length(uniqueHierarchies)) {
+	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))
+	thisTaxon <- data.frame(
+		'id'=hier$results$id,
+		'rank'=hier$results$rank,
+		'name'=hier$results$name, 
+		stringsAsFactors=FALSE
+	)
+	
+	# set genus id, if exists
+	if(is.element('genus',thisTaxon$rank)) {
+		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]
+	}
+	
+	# set higher taxon names
+	temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this
+	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))
+	if(i %% 20 == 0) print(i)
+}
+#save(calCoast, file="data files/calCoastObs.RData")
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -19,8 +19,6 @@ bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','S
 coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')
 
 load("data files/calCoastObs.RData")
-calCoast$lng <- as.numeric(calCoast$lng)
-calCoast$lat <- as.numeric(calCoast$lat)
 # transform coordinates to spatial objects
 coordinates(calCoast) <- ~ lng + lat
 proj4string(calCoast) <- CRS("+proj=longlat")
