@@ -115,7 +115,6 @@ for(i in 1:ceiling(nameCount/myFactor)) {
 	if(i*myFactor %% 300 == 0) print(i*myFactor)
 }
 
-calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
 
 # add new columns to data frame for taxonomy
 taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe')
@@ -132,6 +131,9 @@ calCoast$genus <- NA
 calCoast$subgenus <- NA
 calCoast$tribe <- NA
 calCoast$genus_id <- NA
+
+# add commas to hierarchy to assist with grepl
+calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
 
 print("Merging taxon hierarchy with observations")
 # drop unused taxonomic levels, then loop through each taxon and match to observations
