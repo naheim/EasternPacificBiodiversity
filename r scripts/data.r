@@ -95,6 +95,29 @@ nrow(calCoast)
 save(calCoast, file="data files/calCoastObs.RData")
 
 #### Fetch Taxonomy
+print("Fetching taxon hierarchies")
+myFactor <- 30
+allHier <- unlist(paste(calCoast$hierarchy, collapse=","))
+allHier <- unique(strsplit(allHier,",")[[1]])
+nameCount  <- length(allHier)
+starts <- c(1,seq(1,nameCount, myFactor)[-1])
+ends <- c(1:(nameCount/myFactor)*myFactor, nameCount)
+higherTaxonomy <- data.frame()
+for(i in 1:ceiling(nameCount/myFactor)) {
+	allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")
+	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
+	higherTaxonomy <- rbind(higherTaxonomy, data.frame(
+		'id'=hier$results$id,
+		'rank'=hier$results$rank,
+		'name'=hier$results$name, 
+		stringsAsFactors=FALSE
+	))
+	if(i*myFactor %% 300 == 0) print(i*myFactor)
+}
+
+calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
+
+# add new columns to data frame for taxonomy
 taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe')
 calCoast$kingdom <- NA
 calCoast$phylum <- NA
@@ -110,28 +133,21 @@ calCoast$subgenus <- NA
 calCoast$tribe <- NA
 calCoast$genus_id <- NA
 
-print("Fetching hierarchies")
-uniqueHierarchies <- unique(calCoast$hierarchy)
-for(i in 1:length(uniqueHierarchies)) {
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))
-	thisTaxon <- data.frame(
-		'id'=hier$results$id,
-		'rank'=hier$results$rank,
-		'name'=hier$results$name, 
-		stringsAsFactors=FALSE
-	)
-	
+# drop unused taxonomic levels, then loop through each taxon and match to observations
+theseTaxa <- data.frame(subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels)), stringsAsFactors=FALSE)
+for(i in 1:nrow(theseTaxa)) {	
+	matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep=""), calCoast$hierarchy)
 	# set genus id, if exists
-	if(is.element('genus',thisTaxon$rank)) {
-		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]
+	if(theseTaxa$rank[i] == 'genus') {
+		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]
 	}
 	
 	# set higher taxon names
-	temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))
+	calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i]] <- theseTaxa$name[i]
 	if(i %% 20 == 0) print(i)
+
 }
-#save(calCoast, file="data files/calCoastObs.RData")
+#save(calCoast, higherTaxonomy, file="data files/calCoastObs.RData")
 
 
 
