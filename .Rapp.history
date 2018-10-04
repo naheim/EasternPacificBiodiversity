@@ -1,134 +1,3 @@
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
-timescale
-timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&?late_age=2.588&early_age=541", header=TRUE)
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&late_age=2.588&early_age=541", header=TRUE)
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
-timescale
-timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
-timescale
-12.99*36
-9.99*36
-?predict
-10.5/89
-?scale
-head(noam)
-nrow(subset(noam, is.na(strat_name_id)))
-nrow(subset(noam, is.na(strat_name_id)))/nrow(noam)
-range(subset(noam, is.na(strat_name_id))$b_age)
-2.9e-3
-2.9e3
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?datainfo&rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-nrow(x)
-head(x)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-head(x)
-nrow(x)
-table(x$measurement)
-length(unique(x$specimen_no))
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=full", header=T)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class", header=T)
-nrow(x)
-head(x)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=T)
-nrow(x)
-length(unique(x$accepted_name))
-y <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-head(y)
-nrow(y)
-range(y$maxSize)
-range(x$min, na.rm=T)
-range(x$max, na.rm=T)
-head(x)
-table(x$authorizer)
-levels(x$accepted_name)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian,Triassic&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-nrow(permBrachs)
-table(x$authorizer)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Carboniferous,Triassic&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-nrow(permBrachs)
-table(x$authorizer)
-4546+116
-hist(permBrachs$maxAge)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-head(x)
-taply(x$average, x$measurement, max)
-tapply(x$average, x$measurement, max)
-rawData <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
-#
-speciesSizes <- data.frame('maxSize'=tapply(rawData$average, rawData$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE))#
-#
-genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unqiue(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
-genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unique(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
-head(genusSizes)
-nrow(genusSizes)
-tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE)
-head(tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
-head(genusSizes)
-speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
-head(speciesSizes)
-speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
-head(speciesSizes)
-plot(speciesSizes$length, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
-plot(speciesSizes$maxDim, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
-nrow(speciesSizes)
-nrow(subset(speciesSizes, width==maxDim))
-nrow(subset(speciesSizes, width==maxDim))/nrow(speciesSizes)
-tapply(rawData$genus, rawData$accepted_name, max)
-tapply(rawData$genus, rawData$accepted_name, function(x){return(x[1])})
-tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})
-head(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))}))
-speciesSizes <- data.frame('genus'=factor(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
-head(speciesSizes)
-range(speciesSizes$maxDim)
-genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$max_ma, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$min_ma, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
-genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$maxAge, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$minAge, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
-head(genusSizes)
-q()
-4*5
-67000/60/50
-58/40/50
-58000/40/50
-67000/56/50
-58000/41/50
-1334/270
-1334/263
-(1334-26)/263
-(1334-263)/263
-(1334-263)/
-(1334-263)
-240-145
-(240-145)/12
-169-146
-(240-121)/12
-205/8
-244/8
-q()
-?png
-q()
-69.5-58
-(69.5-58)/69.5
-(69.4-58)/69.4
-q()
-# set root base for proper file direction#
-init.dir <- getwd()#
-if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
-	my.root <- "/Volumes/Blastoid/noelheim_data"#
-} else {#
-	my.root <- "/Users/noelheim"#
-}#
-Sys.setenv(TZ="America/Los_Angeles")#
-#
-source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
-setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));
-load("data files/calCoastObs.RData")
 # set root base for proper file direction#
 init.dir <- getwd()#
 if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
@@ -141,303 +10,69 @@ Sys.setenv(TZ="America/Los_Angeles")#
 source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
 setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
 #
-library(jsonlite)#
+library(vegan)#
+library(maps)#
 #
-## get list of snapshot cal coast projects#
-projNames <- c("Snapshot Cal Coast 2016","Snapshot Cal Coast 2017","Snapshot Cal Coast 2018")#
-projects <- fromJSON(URLencode('http://api.inaturalist.org/v1/projects?q=snapshot cal coast&per_page=200'))$results#
-#
-# columns I don't want to keep#
-dropColumns <- c('time_observed_at','annotations','photos','created_at_details','tags','created_time_zone','quality_metrics','flags','description','time_zone_offset','project_ids_with_curator_id','observed_o','observed_on_string','outlinks','sounds','ofvs','preferences','faves','non_owner_ids','project_ids_without_curator_id','votes','observation_photos','project_observations','identifications','geojson','reviewed_by','comments','project_ids')#
-#
-formatColumns <- function(x, drops) {#
-	x <- x[,!is.element(colnames(x), drops)]#
-	# observed_on#
-	x$observed_on <- as.Date(x$observed_on, "%Y-%m-%d")#
-	# observed_on_details#
-	x$year <- x$observed_on_details$year#
-	# taxon#
-	x$is_active <- x$taxon$is_active#
-	x$endemic <- x$taxon$endemic#
-	x$threatened <- x$taxon$threatened#
-	x$introduced <- x$taxon$introduced#
-	x$native <- x$taxon$native#
-	x$name <- x$taxon$name#
-	x$rank <- x$taxon$rank#
-	x$extinct <- x$taxon$extinct#
-	x$taxon_id <- x$taxon$id#
-	x$observations_count <- x$taxon$observations_count#
-	x$iconic_taxon_name <- x$taxon$iconic_taxon_name#
-	x$preferred_common_name <- x$taxon$preferred_common_name#
-	x$conservation_status.iucn <- x$taxon$conservation_status.iucn#
-	x$conservation_status.geoprivacy <- x$taxon$conservation_status.geoprivacy#
-	x$conservation_status.status <- x$taxon$conservation_status.status#
-	x$hierarchy <- x$taxon$min_species_ancestry#
-	# place_ids#
-	x$place_ids <- sapply(x$place_ids, paste, collapse=",")#
-	# user#
-	x$user_id <- x$user$id#
-	x$user_observation_counts <- x$user$observations_count#
-	x$user_identification_count <- x$user$identifications_count#
-	# lat/lng#
-	temp <- strsplit(x$location, ",")#
-	x$lng <- as.numeric(sapply(temp, function(x){return(x[2])}))#
-	x$lat <- as.numeric(sapply(temp, function(x){return(x[1])}))#
-	x <- x[,!is.element(colnames(x), c('observed_on_details','taxon','place_ids','user','location'))]#
-	return(x)#
+load("data files/calCoastObs.RData")
+table(calCoast$year)
+head(calCoast)
+map('state','California')
+sampleYears <- 2016:2018#
+quartz(height=5, width=15)#
+par(pch=16, mfrow=c(1,3))#
+for(i in 1:3) {#
+	map('state','California')#
+	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==2016], cex=0.5, col='red')#
 }
-j <- 1
-projId <- subset(projects, title==projNames[j])$id#
-#
-	## get number of observations and pages#
-	nObs <- fromJSON(URLencode(paste('http://api.inaturalist.org/v1/observations?project_id=',projId,'&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&per_page=1&order=desc&order_by=created_at&quality_grade=research', sep="")))$total_results#
-	if(nObs %% 200 == 0) {#
-		nPages <- nObs/200#
-	} else {#
-		nPages <- trunc(nObs/200)+1#
-	}#
-	print(paste(projNames[j],": There are ",nObs," observations on ",nPages," pages.", sep=""))#
-#
-	## download data#
-	for(i in 1:3) {#
-		obs <- fromJSON(URLencode(paste("http://api.inaturalist.org/v1/observations?project_id=",projId,"&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&page=",i,"&per_page=200&order=desc&order_by=created_at&quality_grade=research", sep="")))#
-		obs$results <- formatColumns(obs$results, dropColumns)#
-		if(j == 1 & i == 1) {#
-			calCoast <- obs$results#
-		} else {#
-			row.names(obs$results) <- (nrow(calCoast)+1):(nrow(calCoast)+nrow(obs$results))#
-			calCoast <- rbind(calCoast, obs$results)#
-		}			#
-		if(i %% 2 == 0) print(i)#
-	}
-raw
-rawData <- calCoast
-head(calCoast)
-class(calCoast$lng)
-#### Fetch Taxonomy#
-taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe')#
-calCoast$kingdom <- NA#
-calCoast$phylum <- NA#
-calCoast$subphylum <- NA#
-calCoast$class <- NA#
-calCoast$subclass <- NA#
-calCoast$order <- NA#
-calCoast$suborder <- NA#
-calCoast$family <- NA#
-calCoast$subfamily <- NA#
-calCoast$genus <- NA#
-calCoast$subgenus <- NA#
-calCoast$tribe <- NA#
-calCoast$genus_id <- NA
-nrow(calCoast)
-uniqueHierarchies <- unique(calCoast$hierarchy)
-length(uniqueHierarchies)
-subset(calCoast, hierarchy == "" | is.na(hierarchy))
-i <- 1
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies, sep="")))#
-	taxonId <- hier$results$id#
-	taxonRank <- hier$results$rank#
-	taxonName <- hier$results$name
-taxonId
-taxonRank
-taxonName
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies, sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name#
-	)
-thisTaxon
-head(calCoast)
-cauniqueHierarchies
-uniqueHierarchies
-uniqueHierarchies[1]
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name#
-	)
-thisTaxon
-is.element(thisTaxon$rank, 'genus')
-is.element('genus',thisTaxon$rank)
-thisTaxon$id[match('genus', thisTaxon$rank)]
-calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]
-head(calCoast)
-calCoast[hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-thisTaxon$rank
-thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		strings.as.factors=FALSE#
-	)
-calCoast[hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-thisTaxon$rank
-class(thisTaxon$rank)
-?data.frame
-thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)
-class(thisTaxon$rank)
-thisTaxon$rank
-calCoast[hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-colnames(calCoast)
-match(thisTaxon$rank, colnames(calCoast))
-match(colnames(calCoast), thisTaxon$rank)
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], match(colnames(calCoast), thisTaxon$rank)]
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(thisTaxon$rank, colnames(calCoast))]
-is.element(thisTaxon$rank, colnames(calCoast))
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)]
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- thisTaxon$name
-temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name, nrow(temp))
-rep(thisTaxon$name, nrow(temp))
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]
-head(calCoast)
-thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]#
+sampleYears <- 2016:2018#
+quartz(height=5, width=15)#
+par(pch=16, mfrow=c(1,3))#
+for(i in 1:3) {#
+	map('state','California')#
+	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==sampleYears[i]], cex=0.5, col='red')#
 }
-thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]
-t(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]#
-)
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- t(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))])
+?rarefy
+min(table(calCoast$year))
+rarecurve(calCoast$taxon_id[calCoast$year==2016], 1, min(table(calCoast$year)))
+rarecurve(calCoast$taxon_id[calCoast$year==2016], 10, min(table(calCoast$year)))
+table(calCoast$rank)
+length(unique(calCoast$taxon_id))
+length(unique(calCoast$name))
+calCoast <- subset(calCoast, rank == 'species')
+minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))
+minDiv
+rarecurve(calCoast$taxon_id[calCoast$year==2016], 10, 754)
+rarecurve(table(calCoast$taxon_id[calCoast$year==2016]), 10, 754)
+sampleMatrix <- table(calCoast$taxon_id, calCoast$year)
+head(sampleMatrix)
+head(BCI)
+data(BCI)
+head(BCI)
+class(BCI)
+sampleMatrix <- table(calCoast$year, calCoast$taxon_id)
+class(sampleMatrix)
+rarefy(sampleMatrix, 400)
+rarefycurve(sampleMatrix, 400)
+rarecurve(sampleMatrix, 1, 700)
+rarecurve(sampleMatrix, 1, 7)
+rarecurve(sampleMatrix, 1)
+x <- rarecurve(sampleMatrix, 1)
+x
+length(x)
+head(x[1])
+class(x)
+names(x)
+class(x[[1]])
+class(x[[2]])
+class(x[[3]])
+length(x[[1]])
+length(x[[2]])
+length(x[[3]])
+x <- rarecurve(sampleMatrix, 1, plot=FALSE)
+x <- rarecurve(sampleMatrix, 1, plot=FALSE)
+dev.off()
+?rarefy
+min(rowSums(sampleMatrix))
+rarefied <- rarecurve(sampleMatrix, 1, sample = min(rowSums(sampleMatrix)))
 head(calCoast)
-temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-head(calCoast)
-?rep
-temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep.int(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-head(calCoast)
-rep.int(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-rep_len(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))
-head(calCoast)
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)]
-uniqueHierarchies <- unique(calCoast$hierarchy)#
-for(i in 1:length(uniqueHierarchies)) {#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)#
-	# set genus id, if exists#
-	is.element('genus',thisTaxon$rank) {#
-		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]#
-	}#
-	# set higher taxon names#
-	temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))#
-}
-i
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)
-# set genus id, if exists#
-	is.element('genus',thisTaxon$rank) {#
-		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]#
-	}
-uniqueHierarchies <- unique(calCoast$hierarchy)#
-for(i in 1:length(uniqueHierarchies)) {#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)#
-	# set genus id, if exists#
-	if(is.element('genus',thisTaxon$rank)) {#
-		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]#
-	}#
-	# set higher taxon names#
-	temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))#
-}
-head(calCoast)
-allHier <- paste(calCoast$hierarchy, collapse=",")
-allHier
-length(allHier)
-allHier <- strsplit(allHier,",")
-length(allHier)
-class(allHier)
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))
-class(allHier)
-allHier
-allHier <- strsplit(allHier,",")
-class(allHier)
-allHier
-length(allHier)
-allHier <- strsplit(allHier,",")[[1]]
-class(allHier)
-allHier
-length(allHier)
-length(allHier[[1]])
-length(unique(allHier[[1]]))
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))
-allHier <- unique(strsplit(allHier,",")[[1]])
-length(allHier)
-calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
-head(calCoast)
-thisTaxon
-allNames <- paste(allHier, collapse=",")
-allNames
-length(allNames)
-class(allNames)
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames
-URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep=""))
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-hier <- fromJSON(URLencode(paste("http://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
-allHier <- unique(strsplit(allHier,",")[[1]])#
-allNames <- paste(allHier, collapse=",")
-length(allHier)
-length(allHier)/200
-allNames <- paste(allHier[1:200], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:20], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:30], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:40], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:60], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:100], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:200], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:101], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:150], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:190], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:160], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:151], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:152], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:153], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:159], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:158], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:157], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-head(hier)
+q()
