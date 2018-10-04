@@ -1,64 +1,3 @@
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
-timescale
-timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&?late_age=2.588&early_age=541", header=TRUE)
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&late_age=2.588&early_age=541", header=TRUE)
-timescale
-timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
-timescale
-timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
-timescale
-12.99*36
-9.99*36
-?predict
-10.5/89
-?scale
-head(noam)
-nrow(subset(noam, is.na(strat_name_id)))
-nrow(subset(noam, is.na(strat_name_id)))/nrow(noam)
-range(subset(noam, is.na(strat_name_id))$b_age)
-2.9e-3
-2.9e3
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?datainfo&rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-nrow(x)
-head(x)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
-head(x)
-nrow(x)
-table(x$measurement)
-length(unique(x$specimen_no))
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=full", header=T)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class", header=T)
-nrow(x)
-head(x)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=T)
-nrow(x)
-length(unique(x$accepted_name))
-y <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-head(y)
-nrow(y)
-range(y$maxSize)
-range(x$min, na.rm=T)
-range(x$max, na.rm=T)
-head(x)
-table(x$authorizer)
-levels(x$accepted_name)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian,Triassic&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-nrow(permBrachs)
-table(x$authorizer)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Carboniferous,Triassic&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-nrow(permBrachs)
-table(x$authorizer)
-4546+116
-hist(permBrachs$maxAge)
-x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
-permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
-head(x)
 taply(x$average, x$measurement, max)
 tapply(x$average, x$measurement, max)
 rawData <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
@@ -117,18 +56,6 @@ q()
 (69.5-58)/69.5
 (69.4-58)/69.4
 q()
-# set root base for proper file direction#
-init.dir <- getwd()#
-if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
-	my.root <- "/Volumes/Blastoid/noelheim_data"#
-} else {#
-	my.root <- "/Users/noelheim"#
-}#
-Sys.setenv(TZ="America/Los_Angeles")#
-#
-source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
-setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));
-load("data files/calCoastObs.RData")
 # set root base for proper file direction#
 init.dir <- getwd()#
 if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
@@ -210,11 +137,146 @@ projId <- subset(projects, title==projNames[j])$id#
 		}			#
 		if(i %% 2 == 0) print(i)#
 	}
-raw
-rawData <- calCoast
-head(calCoast)
-class(calCoast$lng)
+nrow(calCoast)
+allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
+allHier <- unique(strsplit(allHier,",")[[1]])#
+nameCount  <- length(allHier)
+nameCount
+nameCount %% 150
+nameCount / 150
+ceiling(nameCount/150)
+ceiling(300/150)
+1:ceiling(nameCount/150)*150
+1:ceiling(nameCount/150)*150nameCount
+nameCount
+i <- 1
+i <- 1:8
+i <- 0:8
+i
+i <- 0:(8-1)
+i
+i*150+1
+(i*150+1)+150
+(i*150+1)+150-1
+i <- 1:8
+i*150-150
+first
+last
+1i
+i
+i*150-150
+first <- i*150-150
+first
+i
+i*150
+length(1:150)
+length(151:300)
+seq(1,(150*8),150)
+1:8*150
+nameCount
+seq(1,nameCount, 150)
+seq(1,nameCount, 150)[-1]
+c(1,seq(1,nameCount, 150)[-1])
+1:nameCount*150
+1:(nameCount/150)*150
+nameCount
+c(1:(nameCount/150)*150, nameCount)
+ceiling(nameCount/150)
+starts <- c(1,seq(1,nameCount, 150)[-1])#
+ends <- c(1:(nameCount/150)*150, nameCount)
+length(starts)
+length(ends)
+starts <- c(1,seq(1,nameCount, 150)[-1])#
+ends <- c(1:(nameCount/150)*150, nameCount)
+starts
+ends
+i <- 1
 #### Fetch Taxonomy#
+allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
+allHier <- unique(strsplit(allHier,",")[[1]])#
+nameCount  <- length(allHier)#
+starts <- c(1,seq(1,nameCount, 150)[-1])#
+ends <- c(1:(nameCount/150)*150, nameCount)#
+thisTaxon <- data.frame()#
+for(i in 1:ceiling(nameCount/150)) {#
+	allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
+	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
+	thisTaxon <- rbind(thisTaxon, data.frame(#
+		'id'=hier$results$id,#
+		'rank'=hier$results$rank,#
+		'name'=hier$results$name, #
+		stringsAsFactors=FALSE#
+	))#
+}
+i
+#### Fetch Taxonomy#
+myFactor <- 100#
+allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
+allHier <- unique(strsplit(allHier,",")[[1]])#
+nameCount  <- length(allHier)#
+starts <- c(1,seq(1,nameCount, myFactor)[-1])#
+ends <- c(1:(nameCount/myFactor)*myFactor, nameCount)#
+thisTaxon <- data.frame()#
+for(i in 1:ceiling(nameCount/myFactor)) {#
+	allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
+	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
+	thisTaxon <- rbind(thisTaxon, data.frame(#
+		'id'=hier$results$id,#
+		'rank'=hier$results$rank,#
+		'name'=hier$results$name, #
+		stringsAsFactors=FALSE#
+	))#
+}
+nrow(thisTaxon)
+head(thisTaxon)
+table(thisTaxon$rank)
+length(allHier)
+length(unique(allHier))
+starts
+ends
+myFactor <- 100#
+allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
+allHier <- unique(strsplit(allHier,",")[[1]])#
+nameCount  <- length(allHier)#
+starts <- c(1,seq(1,nameCount, myFactor)[-1])#
+ends <- c(1:(nameCount/myFactor)*myFactor, nameCount)#
+thisTaxon <- data.frame()
+i <- 1
+allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
+	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
+	thisTaxon <- rbind(thisTaxon, data.frame(#
+		'id'=hier$results$id,#
+		'rank'=hier$results$rank,#
+		'name'=hier$results$name, #
+		stringsAsFactors=FALSE#
+	))
+nrow(hier$results)
+hier[[1]]
+hier[[2]]
+hier[[3]]
+#### Fetch Taxonomy#
+myFactor <- 30#
+allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
+allHier <- unique(strsplit(allHier,",")[[1]])#
+nameCount  <- length(allHier)#
+starts <- c(1,seq(1,nameCount, myFactor)[-1])#
+ends <- c(1:(nameCount/myFactor)*myFactor, nameCount)#
+thisTaxon <- data.frame()#
+for(i in 1:ceiling(nameCount/myFactor)) {#
+	allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
+	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
+	thisTaxon <- rbind(thisTaxon, data.frame(#
+		'id'=hier$results$id,#
+		'rank'=hier$results$rank,#
+		'name'=hier$results$name, #
+		stringsAsFactors=FALSE#
+	))#
+	if(i*myFactor %% 300 == 0) print(i*myFactor)#
+}
+nrow(thisTaxon)
+head(thisTaxon)
+calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
+head(calCoast)
 taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe')#
 calCoast$kingdom <- NA#
 calCoast$phylum <- NA#
@@ -229,215 +291,323 @@ calCoast$genus <- NA#
 calCoast$subgenus <- NA#
 calCoast$tribe <- NA#
 calCoast$genus_id <- NA
-nrow(calCoast)
-uniqueHierarchies <- unique(calCoast$hierarchy)
-length(uniqueHierarchies)
-subset(calCoast, hierarchy == "" | is.na(hierarchy))
+head(thisTaxon)
+higherTaxonomy <- thisTaxon
+theseTaxa <- subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels))
+nrow(theseTaxa)
+?subset
+theseTaxa <- data.frame(subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels)), stringsAsFactors=FALSE)
+head(theseTaxa)
+class(theseTaxa$rank)
+class(theseTaxa$name)
+nrow(hitherTaxonomy)
+nrow(higherTaxonomy)
+nrow(theseTaxa)
+?grepl
+head(calCoast)
+grepl(",47178,", calCoast$hierarchy)
 i <- 1
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies, sep="")))#
-	taxonId <- hier$results$id#
-	taxonRank <- hier$results$rank#
-	taxonName <- hier$results$name
-taxonId
-taxonRank
-taxonName
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies, sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name#
-	)
-thisTaxon
-head(calCoast)
-cauniqueHierarchies
-uniqueHierarchies
-uniqueHierarchies[1]
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name#
-	)
-thisTaxon
-is.element(thisTaxon$rank, 'genus')
-is.element('genus',thisTaxon$rank)
-thisTaxon$id[match('genus', thisTaxon$rank)]
-calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]
-head(calCoast)
-calCoast[hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-thisTaxon$rank
-thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		strings.as.factors=FALSE#
-	)
-calCoast[hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-thisTaxon$rank
-class(thisTaxon$rank)
-?data.frame
-thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)
-class(thisTaxon$rank)
-thisTaxon$rank
-calCoast[hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-colnames(calCoast)
-match(thisTaxon$rank, colnames(calCoast))
-match(colnames(calCoast), thisTaxon$rank)
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], match(colnames(calCoast), thisTaxon$rank)]
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], match(thisTaxon$rank, colnames(calCoast))]
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(thisTaxon$rank, colnames(calCoast))]
-is.element(thisTaxon$rank, colnames(calCoast))
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)]
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- thisTaxon$name
-temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name, nrow(temp))
-rep(thisTaxon$name, nrow(temp))
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]
-head(calCoast)
-thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]#
-}
-thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]
-t(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))]#
-)
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- t(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))])
-head(calCoast)
-temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-head(calCoast)
-?rep
-temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep.int(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-head(calCoast)
-rep.int(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-rep_len(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], nrow(temp))
-rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))
-head(calCoast)
-calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)]
-uniqueHierarchies <- unique(calCoast$hierarchy)#
-for(i in 1:length(uniqueHierarchies)) {#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)#
-	# set genus id, if exists#
-	is.element('genus',thisTaxon$rank) {#
-		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]#
-	}#
-	# set higher taxon names#
-	temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))#
-}
-i
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)
+matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep="") calCoast$hierarchy)
+theseTaxa$id[i]
+matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep=""), calCoast$hierarchy)
+matchingObservations
 # set genus id, if exists#
-	is.element('genus',thisTaxon$rank) {#
-		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]#
+	if(theseTaxa$rank[i] == 'genus') {#
+		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]#
 	}
-uniqueHierarchies <- unique(calCoast$hierarchy)#
-for(i in 1:length(uniqueHierarchies)) {#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",uniqueHierarchies[i], sep="")))#
-	thisTaxon <- data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	)#
+theseTaxa$rank[i]
+theseTaxa$rank[i] == 'genus'
+i
+matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep=""), calCoast$hierarchy)#
 	# set genus id, if exists#
-	if(is.element('genus',thisTaxon$rank)) {#
-		calCoast$genus_id[calCoast$hierarchy == uniqueHierarchies[i]] <- thisTaxon$id[match('genus', thisTaxon$rank)]#
+	if(theseTaxa$rank[i] == 'genus') {#
+		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]#
 	}#
 	# set higher taxon names#
-	temp <- calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] # need to count rows to replace, probably a better way to do this#
-	calCoast[calCoast$hierarchy==uniqueHierarchies[i], is.element(colnames(calCoast), thisTaxon$rank)] <- rep(thisTaxon$name[is.element(thisTaxon$rank, colnames(calCoast))], each=nrow(temp))#
+	calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i])] <- theseTaxa$name[i]#
+	if(i %% 20 == 0) print(i)
+calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i]] <- theseTaxa$name[i]
+head(calCoast)
+# drop unused taxonomic levels, then loop through each taxon and match to observations#
+theseTaxa <- data.frame(subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels)), stringsAsFactors=FALSE)#
+for(i in 1:nrow(theseTaxa)) {	#
+	matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep=""), calCoast$hierarchy)#
+	# set genus id, if exists#
+	if(theseTaxa$rank[i] == 'genus') {#
+		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]#
+	}#
+	# set higher taxon names#
+	calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i]] <- theseTaxa$name[i]#
+	if(i %% 20 == 0) print(i)#
+#
 }
 head(calCoast)
-allHier <- paste(calCoast$hierarchy, collapse=",")
-allHier
-length(allHier)
-allHier <- strsplit(allHier,",")
-length(allHier)
-class(allHier)
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))
-class(allHier)
-allHier
-allHier <- strsplit(allHier,",")
-class(allHier)
-allHier
-length(allHier)
-allHier <- strsplit(allHier,",")[[1]]
-class(allHier)
-allHier
-length(allHier)
-length(allHier[[1]])
-length(unique(allHier[[1]]))
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))
-allHier <- unique(strsplit(allHier,",")[[1]])
-length(allHier)
-calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
+tail(calCoast)
+# set root base for proper file direction#
+init.dir <- getwd()#
+if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
+	my.root <- "/Volumes/Blastoid/noelheim_data"#
+} else {#
+	my.root <- "/Users/noelheim"#
+}#
+Sys.setenv(TZ="America/Los_Angeles")#
+#
+source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
+setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
+#
+library(vegan)#
+library(maps)#
+require(rgdal)#
+#
+crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
+bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')#
+coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
+#
+load("data files/calCoastObs.RData")
+nrow(calCoast)
 head(calCoast)
-thisTaxon
-allNames <- paste(allHier, collapse=",")
-allNames
-length(allNames)
-class(allNames)
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames
-URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep=""))
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-hier <- fromJSON(URLencode(paste("http://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
-allHier <- unique(strsplit(allHier,",")[[1]])#
-allNames <- paste(allHier, collapse=",")
-length(allHier)
-length(allHier)/200
-allNames <- paste(allHier[1:200], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:20], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:30], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:40], collapse=",")
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:60], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:100], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:200], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:101], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:150], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:190], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:160], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:151], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:152], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:153], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:159], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:158], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-allNames <- paste(allHier[1:157], collapse=",")#
-hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))
-head(hier)
+range(calCoast$genus_id)
+table(calCoast$rank)
+# set root base for proper file direction#
+init.dir <- getwd()#
+if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
+	my.root <- "/Volumes/Blastoid/noelheim_data"#
+} else {#
+	my.root <- "/Users/noelheim"#
+}#
+Sys.setenv(TZ="America/Los_Angeles")#
+#
+source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
+setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
+#
+library(vegan)#
+library(maps)#
+require(rgdal)#
+#
+crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
+bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')#
+coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
+#
+load("data files/calCoastObs.RData")
+head(calCoast)
+length(unique(calCoast$genus_id))
+length(unique(calCoast$species_id))
+length(unique(calCoast$tribe))
+table(calCoast$kingdom)
+table(calCoast$phylum)
+?over
+# transform coordinates to spatial objects#
+coordinates(calCoast) <- ~ lng + lat#
+proj4string(calCoast) <- CRS("+proj=longlat")#
+calCoast <- spTransform(calCoast, crswgs84)#
+#
+calCoast <- subset(calCoast, rank == 'species')#
+minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))#
+sampleMatrix <- table(calCoast$year, calCoast$taxon_id)#
+#
+rarefied <- rarecurve(sampleMatrix, 1)#
+dev.off()#
+#
+sampleYears <- 2016:2018#
+quartz(height=5, width=15)#
+par(pch=16, mfrow=c(1,3))#
+for(i in 1:3) {#
+	map('state','California')#
+	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==sampleYears[i]], cex=0.5, col='red')#
+}
+## maps#
+cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
+cal <- cal[cal$NAME == 'California',]#
+cal <- spTransform(cal, crswgs84)#
+#
+counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
+counties <- spTransform(counties, crswgs84)#
+#
+mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
+mpas <- spTransform(mpas, crswgs84)#
+#
+# subset individual counties#
+bayArea <- counties[is.element(counties$NAME, bayCounties),]#
+coastalCounties <- counties[is.element(counties$NAME, coastCounties),]#
+#
+temp <- !is.na(over(calCoast, as(bayArea, "SpatialPolygons")))#
+#
+plot(coastalCounties)#
+points(calCoast[temp,], col='blue', pch=16, cex=0.5)
+temp <- !is.na(over(calCoast, as(mpas, "SpatialPolygons")))#
+#
+plot(coastalCounties)#
+points(calCoast[temp,], col='blue', pch=16, cex=0.5)
+head(temp)
+sum(temp)
+sum(temp)/length(temp)
+provinces <- data.frame(#
+	oregonian.columbian = c(48, 55),#
+	oregonian.mendocinian = c(37, 48),#
+	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
+	californian = c(27.8, 34.45)#
+)
+provinces
+provinces <- t(data.frame(#
+	oregonian.columbian = c(48, 55),#
+	oregonian.mendocinian = c(37, 48),#
+	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
+	californian = c(27.8, 34.45)#
+))
+provinces
+# Add Valentine's (1966) bioprovinces#
+provinces <- t(data.frame(#
+	oregonian.columbian = c(48, 55),#
+	oregonian.mendocinian = c(37, 48),#
+	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
+	californian = c(27.8, 34.45)#
+)); colnames(provinces) <- c('southern','northern')
+provinces
+head(calCoast$lng)
+head(calCoast)
+class(calCoast$lng)
+rownames(provinces)
+for(i in 1:nrow(provinces)) {#
+	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
+}#
+calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))
+nrow(provinces)
+i
+rownames(provinces)[i]
+calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]]
+class(provinces)
+# Add Valentine's (1966) bioprovinces#
+provinces <- data.frame(t(data.frame(#
+	oregonian.columbian = c(48, 55),#
+	oregonian.mendocinian = c(37, 48),#
+	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
+	californian = c(27.8, 34.45)#
+))); colnames(provinces) <- c('southern','northern')#
+#
+calCoast$province <- NA#
+for(i in 1:nrow(provinces)) {#
+	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
+}#
+calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))
+head(calCoast)
+table(calCoast$province)
+table(calCoast$province, calCoast$year)
+# Add Valentine's (1966) bioprovinces#
+provinces <- data.frame(t(data.frame(#
+	#oregonian.columbian = c(48, 55),#
+	oregonian.mendocinian = c(37, 48),#
+	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
+	californian = c(27.8, 34.45)#
+))); colnames(provinces) <- c('southern','northern')#
+#
+calCoast$province <- NA#
+for(i in 1:nrow(provinces)) {#
+	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
+}#
+calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))
+table(calCoast$province, calCoast$year)
+map(coastCounties)
+plot(coastCounties)
+crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
+bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')#
+coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
+#
+## load maps#
+cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
+cal <- cal[cal$NAME == 'California',]#
+cal <- spTransform(cal, crswgs84)#
+#
+counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
+counties <- spTransform(counties, crswgs84)#
+#
+mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
+mpas <- spTransform(mpas, crswgs84)
+crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
+bayCounties <- c('Sonoma','Marin','Napa','Contra Costa','Solano','San Francisco','Alameda','San Mateo','Santa Clara')#
+coastCounties <- c('Del Norte','Humboldt','Mendocino',bayCounties,'Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')
+coastCounties
+temp <- !is.na(over(calCoast, as(counties, "SpatialPolygons")))
+head(temp)
+temp <- (over(calCoast, as(counties, "SpatialPolygons")))
+head(temp)
+counties$NAME
+temp <- (over(calCoast, as(coastCounties, "SpatialPolygons")))
+coastalCounties <- counties[is.element(counties$NAME, coastCounties),]
+temp <- (over(calCoast, as(coastalCounties, "SpatialPolygons")))
+head(temp)
+coastalCounties$name
+coastalCounties$NAME
+head(calCoast)
+# subset individual counties#
+bayArea <- counties[is.element(counties$NAME, bayCounties),]#
+coastalCounties <- counties[is.element(counties$NAME, coastCounties),]
+temp <- coastalCounties$NAME[over(calCoast, as(coastalCounties, "SpatialPolygons"))]
+head(temp)
+table(temp)
+levels(temp)
+head(temp)
+calCoast$county <- coastalCounties$NAME[over(calCoast, as(coastalCounties, "SpatialPolygons"))]#
+levels(calCoast$county) <- coastCounties
+sort(table(temp))
+calCoast$county <- factor(calCoast$county, levels = coastCounties)
+levels(calCoast$county)
+calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
+levels(calCoast$county)
+table(calCoast$county)
+sort(table(calCoast$county))
+sort(table(calCoast$county, calCoast$year))
+table(calCoast$county, calCoast$year)
+# add county#
+calCoast$county <- coastalCounties$NAME[over(calCoast, as(counties, "SpatialPolygons"))]#
+calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
+coastCounties
+rev(coastCounties)
+nrow(subset(calCoast, is.na(county)))/nrow(calCoast)
+plot(cal)
+points(subset(calCoast, is.na(county)), col='red')
+plot(counties, add=T, col='blue', ;wd=0.5)
+plot(counties, add=T, col='blue', lwd=0.5)
+plot(counties, add=T, lwd=0.5)
+plot(counties, lwd=0.5)
+plot(coastalCounties, lwd=0.5)
+points(subset(calCoast, is.na(county)), col='red', cex=0.5, pch=16)
+## load maps#
+cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
+cal <- cal[cal$NAME == 'California',]#
+cal <- spTransform(cal, crswgs84)#
+#
+counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
+counties <- spTransform(counties, crswgs84)#
+#
+mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
+mpas <- spTransform(mpas, crswgs84)#
+#
+# subset individual counties#
+bayArea <- counties[is.element(counties$NAME, bayCounties),]#
+coastalCounties <- counties[is.element(counties$NAME, coastCounties),]#
+load("data files/calCoastObs.RData")#
+# transform coordinates to spatial objects#
+coordinates(calCoast) <- ~ lng + lat#
+proj4string(calCoast) <- CRS("+proj=longlat")#
+calCoast <- spTransform(calCoast, crswgs84)#
+#
+# Add Valentine's (1966) bioprovinces#
+provinces <- data.frame(t(data.frame(#
+	#oregonian.columbian = c(48, 55),#
+	oregonian.mendocinian = c(37, 48),#
+	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
+	californian = c(27.8, 34.45)#
+))); colnames(provinces) <- c('southern','northern')#
+#
+calCoast$province <- NA#
+for(i in 1:nrow(provinces)) {#
+	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
+}#
+calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))#
+#
+# add county#
+calCoast$county <- coastalCounties$NAME[over(calCoast, as(counties, "SpatialPolygons"))]#
+calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
+plot(coastalCounties, lwd=0.5)
+points(subset(calCoast, is.na(county)), col='red', cex=0.5, pch=16)
+q()
