@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 taply(x$average, x$measurement, max)
 tapply(x$average, x$measurement, max)
 rawData <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
@@ -58,7 +56,6 @@ q()
 (69.5-58)/69.5
 (69.4-58)/69.4
 q()
->>>>>>> f4d488f230bcbc16b105ef32d4a6a464eeb73dde
 # set root base for proper file direction#
 init.dir <- getwd()#
 if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
@@ -71,28 +68,8 @@ Sys.setenv(TZ="America/Los_Angeles")#
 source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
 setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
 #
-library(vegan)#
-library(maps)#
+library(jsonlite)#
 #
-<<<<<<< HEAD
-load("data files/calCoastObs.RData")
-table(calCoast$year)
-head(calCoast)
-map('state','California')
-sampleYears <- 2016:2018#
-quartz(height=5, width=15)#
-par(pch=16, mfrow=c(1,3))#
-for(i in 1:3) {#
-	map('state','California')#
-	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==2016], cex=0.5, col='red')#
-}
-sampleYears <- 2016:2018#
-quartz(height=5, width=15)#
-par(pch=16, mfrow=c(1,3))#
-for(i in 1:3) {#
-	map('state','California')#
-	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==sampleYears[i]], cex=0.5, col='red')#
-=======
 ## get list of snapshot cal coast projects#
 projNames <- c("Snapshot Cal Coast 2016","Snapshot Cal Coast 2017","Snapshot Cal Coast 2018")#
 projects <- fromJSON(URLencode('http://api.inaturalist.org/v1/projects?q=snapshot cal coast&per_page=200'))$results#
@@ -363,54 +340,8 @@ for(i in 1:nrow(theseTaxa)) {	#
 	calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i]] <- theseTaxa$name[i]#
 	if(i %% 20 == 0) print(i)#
 #
->>>>>>> f4d488f230bcbc16b105ef32d4a6a464eeb73dde
 }
-?rarefy
-min(table(calCoast$year))
-rarecurve(calCoast$taxon_id[calCoast$year==2016], 1, min(table(calCoast$year)))
-rarecurve(calCoast$taxon_id[calCoast$year==2016], 10, min(table(calCoast$year)))
-table(calCoast$rank)
-length(unique(calCoast$taxon_id))
-length(unique(calCoast$name))
-calCoast <- subset(calCoast, rank == 'species')
-minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))
-minDiv
-rarecurve(calCoast$taxon_id[calCoast$year==2016], 10, 754)
-rarecurve(table(calCoast$taxon_id[calCoast$year==2016]), 10, 754)
-sampleMatrix <- table(calCoast$taxon_id, calCoast$year)
-head(sampleMatrix)
-head(BCI)
-data(BCI)
-head(BCI)
-class(BCI)
-sampleMatrix <- table(calCoast$year, calCoast$taxon_id)
-class(sampleMatrix)
-rarefy(sampleMatrix, 400)
-rarefycurve(sampleMatrix, 400)
-rarecurve(sampleMatrix, 1, 700)
-rarecurve(sampleMatrix, 1, 7)
-rarecurve(sampleMatrix, 1)
-x <- rarecurve(sampleMatrix, 1)
-x
-length(x)
-head(x[1])
-class(x)
-names(x)
-class(x[[1]])
-class(x[[2]])
-class(x[[3]])
-length(x[[1]])
-length(x[[2]])
-length(x[[3]])
-x <- rarecurve(sampleMatrix, 1, plot=FALSE)
-x <- rarecurve(sampleMatrix, 1, plot=FALSE)
-dev.off()
-?rarefy
-min(rowSums(sampleMatrix))
-rarefied <- rarecurve(sampleMatrix, 1, sample = min(rowSums(sampleMatrix)))
 head(calCoast)
-<<<<<<< HEAD
-=======
 tail(calCoast)
 # set root base for proper file direction#
 init.dir <- getwd()#
@@ -679,5 +610,4 @@ calCoast$county <- coastalCounties$NAME[over(calCoast, as(counties, "SpatialPoly
 calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
 plot(coastalCounties, lwd=0.5)
 points(subset(calCoast, is.na(county)), col='red', cex=0.5, pch=16)
->>>>>>> f4d488f230bcbc16b105ef32d4a6a464eeb73dde
 q()
