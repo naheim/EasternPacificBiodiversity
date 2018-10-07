@@ -1,728 +1,569 @@
 PROTOZOA
-Boveria subcylindrica
-Boveria navalis.
-Ephelota gemmipara
-E. gigantea 
-Licnophora macfarlandi 
-Trichamoeba schaefferi
-
+Boveria	subcylindrica
+Boveria	navalis.
+Ephelota	gemmipara
+Ephelota	gigantea
+Licnophora	macfarlandi
+Trichamoeba	schaefferi
 PORIFERA
-Axinella sinapeos
-Experiopsis rigida
-Halisarca sp.
-Leuconia (Leucandra) heathi
-Leucosolenia eleanor
-Mycale sp.
-Plocamia karykinos
-Plocamia lithophoenix
-Reneira cineria
-Rhabdodermella nuttingi
-Speciospongia sp.
-Stelletta sp.
-Superites latus
-Tetilla sp.
-Verongia sp
-
+Axinella	sinapeos
+Experiopsis	rigida
+Halisarca	sp.
+Leuconia	(Leucandra)	heathi
+Leucosolenia	eleanor
+Mycale	sp.
+Plocamia	karykinos
+Plocamia	lithophoenix
+Reneira	cineria
+Rhabdodermella	nuttingi
+Speciospongia	sp.
+Stelletta	sp.
+Superites	latus
+Tetilla	sp.
+Verongia	sp
 COELENTERATA
-CLASS HYDROZOA
-ORDER Gymnoblastea
-Corymorpha palma
-Eudendrium californicum
-Garveia annulata
-Hydractinia milleri
-Syncoryne mirabilia
-Tubularia crocea
-Tubularia marina
+CLASS	HYDROZOA
+ORDER	Gymnoblastea
+Corymorpha	palma
+Eudendrium	californicum
+Garveia	annulata
+Hydractinia	milleri
+Syncoryne	mirabilia
+Tubularia	crocea
+Tubularia	marina
+ORDER	Calyptoblastea
+Abietinaria	coei
+Abietinaria	filicula
+Abietinaria	greenei
+Aglaophenia	inconspicura
+Aglaophenia	latirostris
+Aglaophenia	struthionides
+Campanularia	sp.
+Clytia	bakeri
+Gonothyraea	clarki
+Obelia	commissuralis
+Obelia	geniculata
+Obelia	longissima
+Orthopyxis	compressa
+Plumularia	setacea
+Sertularella	turgida
+Sertularla	furcata
+ORDER	Calyptoblastea
+Polyorchis	penicillata
+ORDER	Hydrocorallina
+Stylantheca	porphyra
+ORDER	Trachomedusae
+Gonionemus	vertens
+Order	Siphonophora
+Velella	velella
+CLASS	SCYPHOZOA
+ORDER	Stauromedusae
+Haliclystus	stejnegeri
+ORDER	Discophora
+Aurelia	aurita
+Aurelia	scyphistoma
+CLASS	ANTHOZOA
+SUBCLASS	ALCYONARIA
+ORDER	Stolonifera
+Clavularia	sp.
+ORDER	Pennatulacea
+Renilla	amethystina
+Stylatula	elongata
+ORDER	Gordonacea
+Muricea	hebes
+SUBCLASS	ZOANTHARIA
+ORDER	Edwardsiidea
+Edwardsia	sipunculoides
+Edwardsiella	californica
+ORDER	Cerianthidea
+Cerianthus	aestuari
+Cerianthus	sp.
 
-ORDER Calyptoblastea
-Abietinaria coei
-Abietinaria filicula
-Abietinaria greenei
-Aglaophenia inconspicura
-Aglaophenia latirostris 
-Aglaophenia struthionides
-Campanularia sp.
-Clytia bakeri 
-Gonothyraea clarki
-Obelia commissuralis 
-Obelia geniculata
-Obelia longissima
-Orthopyxis compressa
-Plumularia setacea
-Sertularella turgida
-Sertularla furcata
-
-ORDER Calyptoblastea
-Polyorchis penicillata
-
-ORDER Hydrocorallina
-Stylantheca porphyra
-
-ORDER Trachomedusae
-Gonionemus vertens
-
-Order Siphonophora
-Velella velella
-
-CLASS SCYPHOZOA
-ORDER Stauromedusae
-Haliclystus stejnegeri
-
-ORDER Discophora
-Aurelia aurita
-Aurelia scyphistoma
-
-CLASS ANTHOZOA 
-SUBCLASS ALCYONARIA
-ORDER Stolonifera
-
-Clavularia sp.
-
-ORDER Order Pennatulacea
-Renilla amethystina
-Stylatula elongata
-
-ORDER Gordonacea
-Muricea hebes
-
-SUBCLASS ZOANTHARIA
-ORDER Edwardsiidea
-Edwardsia sipunculoides
-Edwardsiella californica
-
-ORDER Cerianthidea
-Cerianthus aestuari
-Cerianthus sp.
-
-
-ORDER Hexactiniae
-Cribrina artemisia
-Cribrina elegantissima
-Cribrina (Bunodactis) xanthogrammica
-Corynactis sp.
-Cylista (Sagartia) leucolena
-Epiactis prolifera
-Harenactis attenuata
-Metridium dianthus
-Tealia (Urticina) crassicornis
-
-ORDER Madreporaria
-Balanophyllia elegans 
-
-CLASS CTENOPHORA
-Pleurobrachia bachei
-
-PHYLUM PLATYHELMINTHES
-CLASS TURBELLARIA
-ORDER Polycladida
-Planocera californica
-Thysanozoon sp.
-Stylochoplana heathi
-
-ORDER Rhabdocoelida
+ORDER	Hexactiniae
+Cribrina	artemisia
+Cribrina	elegantissima
+Cribrina	(Bunodactis)	xanthogrammica
+Corynactis	sp.
+Cylista	(Sagartia)	leucolena
+Epiactis	prolifera
+Harenactis	attenuata
+Metridium	dianthus
+Tealia	(Urticina)	crassicornis
+ORDER	Madreporaria
+Balanophyllia	elegans
+CLASS	CTENOPHORA
+Pleurobrachia	bachei
+PHYLUM	PLATYHELMINTHES
+CLASS	TURBELLARIA
+ORDER	Polycladida
+Planocera	californica
+Thysanozoon	sp.
+Stylochoplana	heathi
+ORDER	Rhabdocoelida
 Monocelis
-Polychoerus caudatus
-Syndesmis sp.
+Polychoerus	caudatus
+Syndesmis	sp.
+CLASS	CESTODA
+Tetraphyllid
+CLASS	NEMERTEA
+Amphiporus	bimaculatus
+Cephalotghrix	major
+Cerebratulus	sp.,
+Emplectonema	gracile
+Lineus	vegetus
+Malacobdella	grossa
+Micrura	sp.
+Micrura	verrilli
+Paranemertes	peregrina
+PHYLUM	BRYOZOA
+Barentsia	sp.
+Alcyonidium	cervicornis
+Alcyonidium	mytili
+Bugula	californica
+Bugula	murrayana
+Bugula	neritina
+Bugula	pacifica
+Eurystomella	(Lepralia)	bilabiata
+Flustra	lichenoides
+Hippodiplosia	(Lepralia)	pallasiana
+Idmonea	californica
+Membranipora	membranacea
+Menipea	occidentalis
+Pedicellina	echinata
+Phidolopora	(Retepora)	insculpta
+Schizoporella	insculpta
+Tubulipora	flabellaris
+Zoobotryon	pellucida
+PHYLUM	BRACHIOPODA
+Glottidia	albida
+Terebratalia	transversa
+PHYLUM	PHORONIDA
+Phoronopsis	harmeri
+Phoronis	sp.
+PHYLUM	ANNELIDA(ANNULATA)
+CLASS	CHAETOPODA
+SUBCLASS	POLYCHAETA
+Arenicola	claparedii
+Audouinia	(Cirratulus)	luxuriosus
+Chaetopterus	variopedatus
+Clymenella	rubrocincta
+Eudistylia	polymorpha
+Eurythoe	paupera
+Filograna	sp.
+Glycera	rugosa
+Halosydna	californica
+Halosydna	fragilis
+Halosydna	insignis
+Halosydna	lordii
+Halosydna	pulchra
+Harmothoë	adventor
+Harmothoë	sp.
+Hemipodia	borealis
+Lumbrinereis	sp.
+Mesochaetopterus	taylori
+Nephthys	sp.
+Nereis	brandti
+Nereis	vexillosa
+Nereis	sp.
+Odontosyllis	phosphorea
+Pectinaria	brevicoma
+Phyllochaetopterus	prolifica
+Sabellaria	californica
+Serpula	vermicularia
+Spirorbis	spirillum
+Stylarioides	(Trophonia)	papillata
+Terebella	(Amphitrite)	robusta
+Thelepus	crispus
+PHYLUM	SIPUNCULOIDEA
+Dendrostoma	perimeces
+Dendrostoma	petraeum
+Phascolosoma	hespera
+Physcosoma	agassizii
+Sipunculus	nudus
+PHYLUM	ECHIUROIDEA
+Echiurus	pallasii
+Thalassema	sp.
+Urechis	caupo
 
-CLASS CESTODA
-Tetraphyllid 
+PHYLUM	ECHINODERMA
+CLASS	ASTEROffiDEA
+Astrometis	sertulifera
+Astropecten	armatus
+Dermasterias	imbricatea
+Evasterias	troschelii
+Henricia	leviuscula
+Henricia	sanguinolenta
+Leptasterias	aequalis
+Leptasterias	hexactis
+Leptasterias	pusilla
+Linckia	columbiae
+Orthasterias	koehleri
+Patiria	(Asterina)	miniata
+Pisaster	brevispinus
+Pisaster	giganteus
+Pisaster	giganteus	capitatus
+Pisaster	ochraceous	f.	ochraceus
+Pisaster	ochraceus	f.	confertus
+Pisaster	ochraceus	f.	segnis
+Pycnopodia	helianthoides
+Solaster	dawsoni
+Solaster	stimpsoni
 
-CLASS NEMERTEA
-Amphiporus bimaculatus
-Cephalotghrix major
-Cerebratulus sp.,
-Emplectonema gracile
-Lineus vegetus
-Malacobdella grossa
-Micrura sp.
-Micrura verrilli
-Paranemertes peregrina
+CLASS	OPHIUROIDEA
+Amphiodia	barbarae
+Amphiodia	occidentalis
+Amphipholis	pugetana
+Ophioderma	panamensis
+Ophionereis	annulata
+Ophiopholis	aculeata	var.	kennerlyi
+Ophioplocus	esmarki
+Ophiopteris	papillosa
+Ophiothrix	spicula
+CLASS	ECHINOIDEA
+Dendraster	excentricus
+Echinarachnius	parma
+Lovenia	cordiformis
+Lytechinus	anamesus
+Lytechinus	pictus
+Strongylocentrotus	dröbachiensis
+Strongylocentrotus	franciscanus
+Strongylocentrotus	purpuratus
+CLASS	HOLOTHUROIDEA
+Chiridota	albatrossii
+Cucumaria	quinquisemita
+Cucumaria	curata
+Cucumaria	lubrica
+Cucumaria	miniata
+Cucumaria	sp.
+Leptosynapta	inhaerens
+Molpadia	arenicola
+Psolus	chitonoides
+Stichopus	californicus
+Stichopus	parvimensis
+Thyonepsolus	nutriens
+PHYLUM	ARTHROPODA
+CLASS	CRUSTACEA
+ORDER	Copepoda
+Pseudomolgus	navanaci
+Tigriopus	fulvus
+ORDER	Cirripedia
+Balanus	balanoides
+Balanus	cariosus
+Balanus	glandula
+Balanus	hesperius
+Balanus	nubilis
+Balanus	tintinnabulum	californicus
+Chthamalus	dalli
+Chthamalus	fissus
+Mitella	polymerus
+Mitella	polymerus	echinata
+Peltogaster	sp.
+Sacculina	sp.
+Tetraclita	squamosa	rubescens
+ORDER	Amphipoda
+Amphithöe	sp.
+Atylopsis	sp.
+Caprella	acutifrons
+Caprella	kennerlyi
+Caprella	scaura
+Elasmopus	rapax
+Melita	palmata
+Orchestia	sp.
+Orchestia	traskiana
+Orchestoidea	benedicti
+Orchestoidea	californiana
+Orchestoidea	corniculata
+Polycheria	osborni
+ORDER	Isopoda
+Alloniscus	perconvexus
+Cirolana	harfordi
+Exosphaerorma	oregonensis
+Idothea	rectulinea
+Idothea	urotoma
+Ligyda	occidentalis
+Ligyda	pallasii
+Limnoria	lignorum
+Pentidotea	resecata
+Pentidotea	stenops
+Pentidotea	wosnesenskii
+Sphaeroma	pentodon
+Synidotea	ritteri
+Mysis	sp.
+Callomysis	maculate
+ORDER	Nebaliacea
+Nebalia	sp.
 
-PHYLUM BRYOZOA
-Barentsia sp.
-Alcyonidium cervicornis
-A mytili
-Bugula californica
-Bugula murrayana
-Bugula neritina
-Bugula pacifica
-Eurystomella (Lepralia) bilabiata
-Flustra lichenoides
-Hippodiplosia (Lepralia) pallasiana
-Idmonea californica
-Membranipora membranacea
-Menipea occidentalis
-Pedicellina echinata
-Phidolopora (Retepora) insculpta
-Schizoporella insculpta
-Tubulipora flabellaris
-Zoobotryon pellucida
+ORDER	Stomatopoda
+Pseudosquilla	lessonii
+ORDER	Decapoda
+Suborder	Natantia
+Betaeus	harfordi
+Betaeus	longidactylus
+Crago	(Crangon)	nigricauda
+Crago	nigromaculata
+Crangon	·bellimanus
+Crangon	(Alpheus)	dentipes
+Hippolysmata	californica
+Hippolyte	californiensis
+Spirontocaris	brevirostris
+Spirontocaris	cristata
+Spirontocaris	palpator
+Spirontocaris	paludicola
+Spirontocaris	picta
+Spirontocaris	prionota
+Suborder	Reptantia
+Tribe	Palinura
+Panulirus	interruptus
+Tribe	Anomura
+Blepharipoda	occidentalis
+Callianassa	affinis
+Callianassa	californiensis
+Callianassa	longimana
+Cryptolithodes	sitchensis
+Emerita	analoga
+Hapalogaster	cavicauda
+Hapalogaster	mertensii
+Holopagurus	pilosus
+Lepidopa	myops
+Pachycheles	rudis
+Pagurus	sp.
+Pagurus	beringanus
+Pagurus	dalli
+Pagurus	granosimanus
+Pagurus	hemphillii
+Pagurus	hirsutiusculus
+Pagurus	samuelis
+Petrolisthes	cinctipes
+Petrolisthes	eriomerus
+Upogebia	pugettensis
+Tribe	Brachyura
+Cancer	antennarius
+Cancer	magister
+Cancer	oregonensis
+Cancer	productus
+Ccyloxanthops	novemdentatus
+Epialtus	nuttallii
+Fabia	subquadrata
+Hemisgrapsus	nudus
+Hemisgrapsus	oregonensis
+Heterocrypta	occidcntalis
+Inachoides	tuberculatus
+Lophopanopeus	bellus
+Lophopanopeus	heathii
+Lophopanopeus	leucomanus
+Loxorhynchus	crispatus
+Mimulus	foliatus
+Opisthopus	transversus
+Oregonia	gracilis
+Pachygrapsus	crassipes
+Parapinnixa	affinis
+Pilumnus	spinohirsutus
+Pinnixa	barnharti
+Pinnixa	franciscana
+Pinnixa	littoralis
+Pinnixa	longipes
+Pinnixa	tomentosa
+Pinnotheres	concharum
+Portunus	xantusii
+Pugetia	gracilis
+Pugetia	(Epialtus)	producta
+Randallia	ornata
+Scleroplax	granulata
+Scyra	acutifrons
+Speocarcinus	californiensis
+Uca	crenulata
+Xanthias	taylori
+CLASS	PYCNOGONIDA
+Anoplodactylus	erectus
+Halosoma	viridintestinalis
+Lecythorhynchus	martinatus
+Pycnogonum	stearnsi
+Pycnogonum	sp.
+Tanystylum	intermedium
+PHYLUM	MOLLUSCA
+CLASS	AMPHINEURA
+Order	Polyplacophora
+Callistochiton	crassicostatus
+Cryptochiton	stelleri
+Ischnochiton	conspicuus
+Ischnochiton	magdalenensis
+Ischnochiton	mertensii
+Ischnochiton	regularis
+Katherina	tunicata
+Lepidochitona	hartwegii
+Lepidochitona	(Tonicella)	lineata
+Mopalia	muscosa
+Mopalia	sp.
+Nuttallina	californica
+Placiphorella	velata
+CLASS	GASTROPODA
+SUBCLASS	PROSOBRANCHIATA
+Order	Docoglossa
+Acmaea	cassis	pelta
+Acmaea	depicta
+Acmaea	digitalis	textilis
+Acmaea	mitra
+Acmaea	scabra
+Acmaea	scutum	patina
+Lottia	gigantea
+Order	Rhipodoglossa
+Astraea	(Trochus)	inaequa.lis
+Astraea	(Pomaulax)	undosa
+Calliostoma	costatum
+Fissurella	volcano
+Diadora	aspera
+Haliotis	cracherodii
+Haliotis	fulgens
+Haliotis	kamschatkana
+Haliotis	rufescens
+Megathura	(Lucapina)	crenulata
+Norrisia	norrisii
+Tegula	(Chlorostoma)	brunnea
+Tegula	funebrale
+Tegula	ligulata
+ORDER	Taenioglossa
+Aletes	squamigerus
+Argobuccinum	oregonensis
+Cerithidea	californica
+Crepidula	adunca
+Crepidula	nivea
+Crepidula	onyx
+Cypraea	spadicea
+Lacuna	porrecta
+Littorina	planaxis
+Littorina	rudis
+Littorina	(Melarhaphe)	scutulata
+Polinices	(Natica)	draconis
+Polinices	lewisii
+Polinices	recluziana
+Trichotropis	cancellata
+ORDER	Gymnoglossa
+Alectrion	(Nassa)	fossatus
+Alectrion	tegula
+Amphissa	versicolor
+Acanthina	paucillrata
+Acanthina	spirata
+Murex	trialatus
+Olivella	biplicata
+Olivella	pedroana
+Purpura	(Murex)	foliata
+Purpura	nuttallii
+Thais	(Purpura)	canaliculata
+Thais	emarginata
+Thais	lamellosa
+Urosalpinx	cinereus
+ORDER	Toxiglossa
+Conus	californicus
+SUBCLASS	PULMONATA
+Gadinia	reticulata
+SUBCLASS	OPISTHOBHANCHIATA
+Order	Nudibranchiata
+Anisodoris	nobilis
+Aegires	albopunctatus
+Archidoris	montereyensis
+Cadlina	marginata
+Corambe	pacifica
+Dendrodoris	(Doriopsis)	fulva
+Diaulula	sandiegensis
+Galvinia	ollvacea
+Glossodoris	californiensis
+Hermissenda	crassicornis
+Hopkinsia	rosacea
+Melibe	leonina
+Pleurophyllidea	californica
+Rostanga	pulchra
+Triopha	carpenteri
+Triopha	maculata
 
-PHYLUM BRACHIOPODA
-Glottidia albida
-Terebratalia transversa
-
-PHYLUM PHORONIDA
-Phoronopsis harmeri
-Phoronis sp.
-
-PHYLUM ANNELIDA(ANNULATA)
-CLASS CHAETOPODA
-SUBCLASS POLYCHAETA
-Arenicola claparedii
-Audouinia (Cirratulus) luxuriosus
-Chaetopterus variopedatus
-Clymenella rubrocincta
-Eudistylia polymorpha
-Eurythoe paupera
-Filograna sp.
-Glycera rugosa
-Halosydna californica
-Halosydna fragilis 
-Halosydna insignis 
-Halosydna lordii 
-Halosydna pulchra 
-Harmothoë adventor
-Harmothoë sp.
-Hemipodia borealis
-Lumbrinereis sp.
-Mesochaetopterus taylori
-Nephthys sp.
-Nereis brandti
-Nereis vexillosa 
-Nereis sp.
-Odontosyllis phosphorea
-Pectinaria brevicoma
-Phyllochaetopterus prolifica
-Sabellaria californica
-Serpula vermicularia
-Spirorbis spirillum
-Stylarioides (Trophonia) papillata
-Terebella (Amphitrite) robusta
-Thelepus crispus
-
-PHYLUM SIPUNCULOIDEA
-Dendrostoma perimeces
-Dendrostoma petraeum
-Phascolosoma hespera
-Physcosoma agassizii
-Sipunculus nudus
-
-PHYLUM ECHIUROIDEA
-Echiurus pallasii
-Thalassema sp.
-Urechis caupo
-
-
-PHYLUM ECHINODERMA
-CLASS ASTEROffiDEA 
-Astrometis sertulifera
-Astropecten armatus
-Dermasterias imbricatea
-Evasterias troschelii
-Henricia leviuscula
-Henricia sanguinolenta
-Leptasterias aequalis
-Leptasterias hexactis
-Leptasterias pusilla
-Linckia columbiae
-Orthasterias koehleri
-Patiria (Asterina) miniata
-Pisaster brevispinus
-Pisaster giganteus
-Pisaster giganteus capitatus
-Pisaster ochraceous f. ochraceus
-Pisaster ochraceus f. confertus
-Pisaster ochraceus f. segnis
-Pycnopodia helianthoides
-Solaster dawsoni
-Solaster stimpsoni
-
-
-CLASS OPHIUROIDEA
-Amphiodia barbarae
-Amphiodia occidentalis
-Amphipholis pugetana
-Ophioderma panamensis
-Ophionereis annulata
-Ophiopholis aculeata var. kennerlyi
-Ophioplocus esmarki
-Ophiopteris papillosa
-Ophiothrix spicula
-
-CLASS ECHINOIDEA
-Dendraster excentricus
-Echinarachnius parma
-Lovenia cordiformis
-Lytechinus anamesus
-Lytechinus pictus
-Strongylocentrotus dröbachiensis
-Strongylocentrotus franciscanus 
-Strongylocentrotus purpuratus
-
-CLASS HOLOTHUROIDEA
-Chiridota albatrossii
-Cucumaria quinquisemita
-Cucumaria curata
-Cucumaria lubrica
-Cucumaria miniata
-Cucumaria sp.
-Leptosynapta inhaerens
-Molpadia arenicola
-Psolus chitonoides 
-Stichopus californicus
-Stichopus parvimensis
-Thyonepsolus nutriens
-
-PHYLUM ARTHROPODA
-CLASS CRUSTACEA
-ORDER Copepoda
-Pseudomolgus navanaci
-Tigriopus fulvus 
-
-ORDER Cirripedia 
-Balanus balanoides
-Balanus cariosus
-Balanus glandula
-Balanus hesperius 
-Balanus nubilis 
-Balanus tintinnabulum californicus
-Chthamalus dalli
-Chthamalus fissus
-Mitella polymerus
-Mitella polymerus echinata
-Peltogaster sp.
-Sacculina sp.
-Tetraclita squamosa rubescens
-
-ORDER Amphipoda
-Amphithöe sp.
-Atylopsis sp.
-Caprella acutifrons
-Caprella kennerlyi
-Caprella scaura
-Elasmopus rapax
-Melita palmata
-Orchestia sp.
-Orchestia traskiana
-Orchestoidea benedicti 
-Orchestoidea californiana
-Orchestoidea corniculata
-Polycheria osborni
-
-ORDER Isopoda
-Alloniscus perconvexus
-Cirolana harfordi
-Exosphaerorma oregonensis
-Idothea rectulinea
-Idothea urotoma
-Ligyda occidentalis
-Ligyda pallasii
-Limnoria lignorum
-Pentidotea resecata
-Pentidotea stenops
-Pentidotea wosnesenskii
-Sphaeroma pentodon
-Synidotea ritteri
-Mysis sp.
-Callomysis maculate
-
-ORDER Nebaliacea
-Nebalia sp.
-
-
-ORDER Stomatopoda
-Pseudosquilla lessonii
-
-ORDER Decapoda 
-Suborder Natantia
-Betaeus harfordi
-Betaeus longidactylus 
-Crago (Crangon) nigricauda 
-Crago nigromaculata
-Crangon ·bellimanus
-Crangon (Alpheus) dentipes 
-Hippolysmata californica
-Hippolyte californiensis
-Spirontocaris brevirostris
-Spirontocaris cristata
-Spirontocaris palpator
-Spirontocaris paludicola 
-Spirontocaris picta
-Spirontocaris prionota 
-
-Suborder Reptantia
-Tribe Palinura
-Panulirus interruptus
-
-Tribe Anomura
-Blepharipoda occidentalis
-Callianassa affinis
-Callianassa californiensis 
-Callianassa longimana 
-Cryptolithodes sitchensis
-Emerita analoga
-Hapalogaster cavicauda
-Hapalogaster mertensii
-Holopagurus pilosus
-Lepidopa myops
-Pachycheles rudis
-Pagurus sp.
-Pagurus beringanus
-Pagurus dalli
-Pagurus granosimanus
-Pagurus hemphillii 
-Pagurus hirsutiusculus 
-Pagurus samuelis
-Petrolisthes cinctipes
-Petrolisthes eriomerus
-Upogebia pugettensis 
-
-Tribe Brachyura
-Cancer antennarius
-Cancer magister
-Cancer oregonensis
-Cancer productus
-Ccyloxanthops novemdentatus 
-Epialtus nuttallii 
-Fabia subquadrata 
-Hemisgrapsus nudus
-Hemisgrapsus oregonensis 
-Heterocrypta occidcntalis
-Inachoides tuberculatus 
-Lophopanopeus bellus
-Lophopanopeus heathii 
-Lophopanopeus leucomanus 
-Loxorhynchus crispatus
-Mimulus foliatus
-Opisthopus transversus
-Oregonia gracilis 
-Pachygrapsus crassipes
-Parapinnixa affinis
-Pilumnus spinohirsutus
-Pinnixa barnharti
-Pinnixa franciscana 
-Pinnixa littoralis
-Pinnixa longipes
-Pinnixa tomentosa
-Pinnotheres concharum 
-Portunus xantusii
-Pugetia gracilis
-Pugetia (Epialtus) producta 
-Randallia ornata
-Scleroplax granulata
-Scyra acutifrons
-Speocarcinus californiensis
-Uca crenulata
-Xanthias taylori
-
-CLASS PYCNOGONIDA
-Anoplodactylus erectus
-Halosoma viridintestinalis 
-Lecythorhynchus martinatus
-Pycnogonum stearnsi
-Pycnogonum sp.
-Tanystylum intermedium
-
-PHYLUM MOLLUSCA
-CLASS AMPHINEURA
-Order Polyplacophora
-Callistochiton crassicostatus
-Cryptochiton stelleri
-Ischnochiton conspicuus
-Ischnochiton magdalenensis
-Ischnochiton mertensii 
-Ischnochiton regularis 
-Katherina tunicata
-Lepidochitona hartwegii
-Lepidochitona (Tonicella) lineata
-Mopalia muscosa
-Mopalia sp.
-Nuttallina californica
-Placiphorella velata
-
-CLASS GASTROPODA
-SUBCLASS PROSOBRANCHIATA
-Order Docoglossa
-Acmaea cassis pelta
-Acmaea depicta
-Acmaea digitalis textilis
-Acmaea mitra
-Acmaea scabra
-Acmaea scutum patina
-Lottia gigantea
-
-Order Rhipodoglossa
-Astraea (Trochus) inaequa.lis 
-Astraea (Pomaulax) undosa
-Calliostoma costatum
-Fissurella volcano
-Diadora aspera
-Haliotis cracherodii
-Haliotis fulgens 
-Haliotis kamschatkana
-Haliotis rufescens
-Megathura (Lucapina) crenulata
-Norrisia norrisii
-Tegula (Chlorostoma) brunnea
-Tegula funebrale
-Tegula ligulata
-
-ORDER Taenioglossa
-Aletes squamigerus
-Argobuccinum oregonensis
-Cerithidea californica
-Crepidula adunca
-Crepidula nivea
-Crepidula onyx
-Cypraea spadicea
-Lacuna porrecta
-Littorina planaxis
-Littorina rudis
-Littorina (Melarhaphe) scutulata
-Polinices (Natica) draconis
-Polinices lewisii
-Polinices recluziana
-Trichotropis cancellata
-
-ORDER Gymnoglossa
-Alectrion (Nassa) fossatus
-Alectrion tegula
-Amphissa versicolor
-Acanthina paucillrata
-Acanthina spirata
-Murex trialatus 
-Olivella biplicata
-Olivella pedroana
-Purpura (Murex) foliata
-Purpura nuttallii
-Thais (Purpura) canaliculata
-Thais emarginata 
-Thais lamellosa 
-Urosalpinx cinereus
-
-ORDER Toxiglossa
-Conus californicus
-
-SUBCLASS PULMONATA
-Gadinia reticulata
-
-SUBCLASS OPISTHOBHANCHIATA
-Order Nudibranchiata
-Anisodoris nobilis
-Aegires albopunctatus
-Archidoris montereyensis
-Cadlina marginata
-Corambe pacifica
-Dendrodoris (Doriopsis) fulva
-Diaulula sandiegensis
-Galvinia ollvacea
-Glossodoris californiensis
-Hermissenda crassicornis
-Hopkinsia rosacea
-Melibe leonina
-Pleurophyllidea californica
-Rostanga pulchra
-Triopha carpenteri
-Triopha maculata
-
-
-ORDER Tectibranchiata
-Acteon punctocoelatus
-Bullaria gouldiana
-Haminoea vesicula
-Navanax inermis
-Philine sp.
-Phyllaplysia taylori
-Tethys (Aplysia) californica
-Tylodina fungina
-
-CLASS BIVALVIA
-ORDER Prionodesmacea
-SUBORDER Filibranchiata
-Hinnites giganteus
-Lithophaga plumula 
-Modiolus modiolus 
-Mytilus californianus
-Mytilus edulis
-Ostrea gigas
-Ostrea lurida
-Ostrea virginica
-Pecten circularis
-Pecten latiauritus
-Pecten hindsii
-Pododesmus (Monia) macroschisma
-Septlfer bifurcatus
-
-ORDER Teleodesmacea
-Bankia setacea
-Cardita subquadrata
-Cardium corbis
-Chama pellucida
-Chione succincta
-Chione undatella
-Donax bouldii
-Macoma nasuta
-Macoma secta
-Mya arenaria
-Panope generosa
-Paphia staminea
-Parapholas californica
-Pholadidea ovoidea
-Pholadidea parva
-Pholadidea penita
-Platyodon cancellatus
-Psephidia lordi
-Pseudopythina rugifera
-Saxicava pholadis
-Saxidomus giganteus
-Saxicava arctica
-Saxidoums giganteus
-Saxidoums nuttallii
-Schizothaerus nuttallii
-Sanguinolaria nuttallii
-Siliqua patula
-Solen rosaceus
-Solen sicarius
-Tagelus californianus
-Tellina bodegensis
-Teredo diegensis
-Teredo navalis
-Tivela stultorum
-Zirfaea gabbi
-
-CLASS CEPHALOPODA
-Polypus bimaculatus
-Polypus apollyon
-
-PHYLUM CHORDATA 
-SUBPHYLUM HEMICHORDATA
-Dolichoglossus pusillus
-
-
-
-  SUBPHYLUMUROCHORDATA(TUNICATA) Sea Squirts, Compound Ascidians, etc.
-There is a large literature on Pacific coast tunicates, i,.nd probably most of the species have been described, except for a few
-references are scat-
-A summat:ton of the
-preferably from living
-References:
-Huntsman, A. G. 1911. Ascidians from the coast of Canada.
-from the
-tered.
-situation,
-specimens, would be very acceptable.
-Huntsman,
-Ritter,
-Ritter,
-Ritter
-A.
-w. E.
-Vf. E.
-G.
-ascidians from the Canada. Contrib.
-central California coast, but the There is no ri:onterey Bay literature.
-with good colored illustrations,
-& Forsyth.
-1913. ~e simple ascidians from the northeast Pacific in the collections of the u.s.Natlonal Museum. Proc. u.S.Nat.Mus., XLV:427-505.
-1917. Ascidians of the littoral
-of southern California. Univ.Calif. Publ.Zool., XVI:439-512.
-R'ltter & Forsyth. Reference: Grave, B. H. 1920. Amaroucium
-zone
-Amaroucium californicum
-Botrylloides
-Clavellina
-pellucidum
-The activities
-the tadpole
-XXX:239-257 ••••••••.•••••••.••••••••••
-Trans.Roy.Canad.Inst.,
-1911: 111-
-1912. Holosomatous
-coast of western
-Canad.Biol., 1906-1910:103-185.
-1900. Some ascidians from the Puget Sound collections of 1896. Ann.N.Y. Acad.Sci., XII:589-616.
-Ritter & Forsyth •••••••••••••••••••• sp •••••••••••••••••••••••••••••••••••••••••••••
-113
-480
-• 115 480 116 117
-•• 287
-diegensis
-Ciona intestinalis (Linn.) ••••••••••..••....••••.•••••••.•• Euherdmania claviformis (Ritter) ••••••••••••••••••••••••••• Glossophorum pla.num R:ttter & Forsyth ••••••••••••••••••.••••
-Halocynthia haustor (Stimpson) (considered to be Pyura haus tor (Stimpson) by Huntsr.1a11 1912)
-form constellatum. I. and reactions of
-larvae. Jnl.Exp.Zool.,
-47
-
-   SUBPHYLUMCEPHALOCHORDATA- LANCELETS .. -
-Branchios toma californ iense Cooper •••••••.•••••••••••••••••
-SUBPHYLUMCRANIATA (YE£lTEBRATA) CLASS PISCES FISHES
-360
-Consideration of the fishes has been deliberately
-as in the case of the protozoa, except where it was thought that the mention of a few of the most obvious forms would add to the interest or usefulness of the account.
-References:
-Hubbs, Carl L. 1926. Notes on the blennioid fishes of western North America. Papers Mich.
-Acad.Arts,Sci.Let., VII:351-394.
-Jordan & Evermann. 1896. The fishes of north and mid-
-dle .America. Bull.U.S.Nat.Mus., No. 47.
-Star•ks, E. C. 1921. A key to the families of marine fishes of the west coast. Pish Bull.,
-Calif.F.& G.Comm., No.5, 16 pp. Walford, L. A. 1931. Handbook of common comm.ereial and
-game fishes of California.
-Divn.F.& G.Calif.,No.28,
-excellently illustrated
-account in which some of the shore fishes are mentioned, and a few inver- tebrates. One could wish heartily
-that an account of this type might sometime soon be devoted to the tide-
-pool fish.
-Cauliarchus
-ClevelancHa ios (Jordan & Gilbert) Mud goby •••••.••••.•••••
-Epigeichthys Galichthys Gibbonsia
-Hypsypops Leuresthes
-atro-purpureus mirabilis Cooper
-elegans (Cooper) - rubricundus (Girard)
-(Kittlitz)
-Elenny •••••••••••••• goby •••••••••••.••••••••
-meandricus
-Clingfish ••••••••••••••••••••
-      71
-     422
-      71
-     360
-      71
-     174
-hab-
-tenuis
-(Ayres) Grunion, Top Smelt. Reference: Clark, F. N. 1925. The life history of Leuresthes tenuis, an atherine
-fish with tide controlled spawning its. Fish! Bull.,Divn.F.& G.Calif. No. 10, 5 PP•
--
-Sand Blenny
-•••••••••.....•••••••••• Garibaldi •••••••••••••••••
-Fish Bull., 183 pp. An
-and popular
-omitted,
-48
-
-         Myliobatis Oligocottus Porichthys
-californicus maculosus
-notatus Girard spp., skates californicus
-PLANTS
-Plants have been mentioned only incidentally.
-Raja several
-Typhlogobius
-Xiphister mucosus (Girard)
-Blind••••••••••••••••
-63 71
-treatment would have mals, but it was not
-An ideal been to consider them along with the ani-
-Reference: Setchell
-& Gardner.
-practical to do so in this case.
-1919-20-25. Marine Algae of the Pacific Coast of North Arr.erica.
-Pts. I, II, and III. Univ.Calif. Publ.Botany, VIII:1-898, and in
-progress.
-Eagle Ray, Sculpin,
-Midshipman,
-Steindacher
-Blenny •••••••••••••••••••••••••o
-California Tidepool Grunter
-Stine Ray Johnny •••••• 174 ••••••••••••• 314
-49
+ORDER	Tectibranchiata
+Acteon	punctocoelatus
+Bullaria	gouldiana
+Haminoea	vesicula
+Navanax	inermis
+Philine	sp.
+Phyllaplysia	taylori
+Tethys	(Aplysia)	californica
+Tylodina	fungina
+CLASS	BIVALVIA
+ORDER	Prionodesmacea
+SUBORDER	Filibranchiata
+Hinnites	giganteus
+Lithophaga	plumula
+Modiolus	modiolus
+Mytilus	californianus
+Mytilus	edulis
+Ostrea	gigas
+Ostrea	lurida
+Ostrea	virginica
+Pecten	circularis
+Pecten	latiauritus
+Pecten	hindsii
+Pododesmus	(Monia)	macroschisma
+Septlfer	bifurcatus
+ORDER	Teleodesmacea
+Bankia	setacea
+Cardita	subquadrata
+Cardium	corbis
+Chama	pellucida
+Chione	succincta
+Chione	undatella
+Donax	bouldii
+Macoma	nasuta
+Macoma	secta
+Mya	arenaria
+Panope	generosa
+Paphia	staminea
+Parapholas	californica
+Pholadidea	ovoidea
+Pholadidea	parva
+Pholadidea	penita
+Platyodon	cancellatus
+Psephidia	lordi
+Pseudopythina	rugifera
+Saxicava	pholadis
+Saxidomus	giganteus
+Saxicava	arctica
+Saxidoums	giganteus
+Saxidoums	nuttallii
+Schizothaerus	nuttallii
+Sanguinolaria	nuttallii
+Siliqua	patula
+Solen	rosaceus
+Solen	sicarius
+Tagelus	californianus
+Tellina	bodegensis
+Teredo	diegensis
+Teredo	navalis
+Tivela	stultorum
+Zirfaea	gabbi
+CLASS	CEPHALOPODA
+Polypus	bimaculatus
+Polypus	apollyon
+PHYLUM	CHORDATA
+SUBPHYLUM	HEMICHORDATA
+Dolichoglossus	pusillus
+SUBPHYLUM	UROCHORDATA
+Amaroucium	californicum
+Botrylloides	diegensis
+Clavellina	sp.
+Ciona	intestinalis
+Euherdmania	claviformis
+Glossophorum	planum
+Halocynthia	haustor
+SUBPHYLUM	CEPHALOCHORDATA
+Branchiostoma	californiense
+SUBPHYLUMCRANIATA
+CLASS	PISCES
+Cauliarchus	meandricus
+ClevelancHa	ios
+Epigeichthys	atro-purpureus
+Galichthys	mirabilis
+Gibbonsia	elegans
+Hypsypops	rubricundus
+Leuresthes	tenuis
+Myliobatis	californicus
+Oligocottus	maculosus
+Porichthys	notatus
+Raja	spp.
+Typhlogobius	californicus
+Xiphister	mucosus
