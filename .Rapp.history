@@ -1,590 +1,76 @@
-taply(x$average, x$measurement, max)
-tapply(x$average, x$measurement, max)
-rawData <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
-#
-speciesSizes <- data.frame('maxSize'=tapply(rawData$average, rawData$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE))#
-#
-genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unqiue(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
-genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unique(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
-head(genusSizes)
-nrow(genusSizes)
-tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE)
-head(tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
-head(genusSizes)
-speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
-head(speciesSizes)
-speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
-head(speciesSizes)
-plot(speciesSizes$length, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
-plot(speciesSizes$maxDim, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
-nrow(speciesSizes)
-nrow(subset(speciesSizes, width==maxDim))
-nrow(subset(speciesSizes, width==maxDim))/nrow(speciesSizes)
-tapply(rawData$genus, rawData$accepted_name, max)
-tapply(rawData$genus, rawData$accepted_name, function(x){return(x[1])})
-tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})
-head(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))}))
-speciesSizes <- data.frame('genus'=factor(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
-head(speciesSizes)
-range(speciesSizes$maxDim)
-genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$max_ma, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$min_ma, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
-genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$maxAge, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$minAge, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
-head(genusSizes)
-q()
-4*5
-67000/60/50
-58/40/50
-58000/40/50
-67000/56/50
-58000/41/50
-1334/270
-1334/263
-(1334-26)/263
-(1334-263)/263
-(1334-263)/
-(1334-263)
-240-145
-(240-145)/12
-169-146
-(240-121)/12
-205/8
-244/8
-q()
-?png
-q()
-69.5-58
-(69.5-58)/69.5
-(69.4-58)/69.4
-q()
-# set root base for proper file direction#
-init.dir <- getwd()#
-if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
-	my.root <- "/Volumes/Blastoid/noelheim_data"#
-} else {#
-	my.root <- "/Users/noelheim"#
-}#
-Sys.setenv(TZ="America/Los_Angeles")#
-#
-source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
-setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
-#
-library(jsonlite)#
-#
-## get list of snapshot cal coast projects#
-projNames <- c("Snapshot Cal Coast 2016","Snapshot Cal Coast 2017","Snapshot Cal Coast 2018")#
-projects <- fromJSON(URLencode('http://api.inaturalist.org/v1/projects?q=snapshot cal coast&per_page=200'))$results#
-#
-# columns I don't want to keep#
-dropColumns <- c('time_observed_at','annotations','photos','created_at_details','tags','created_time_zone','quality_metrics','flags','description','time_zone_offset','project_ids_with_curator_id','observed_o','observed_on_string','outlinks','sounds','ofvs','preferences','faves','non_owner_ids','project_ids_without_curator_id','votes','observation_photos','project_observations','identifications','geojson','reviewed_by','comments','project_ids')#
-#
-formatColumns <- function(x, drops) {#
-	x <- x[,!is.element(colnames(x), drops)]#
-	# observed_on#
-	x$observed_on <- as.Date(x$observed_on, "%Y-%m-%d")#
-	# observed_on_details#
-	x$year <- x$observed_on_details$year#
-	# taxon#
-	x$is_active <- x$taxon$is_active#
-	x$endemic <- x$taxon$endemic#
-	x$threatened <- x$taxon$threatened#
-	x$introduced <- x$taxon$introduced#
-	x$native <- x$taxon$native#
-	x$name <- x$taxon$name#
-	x$rank <- x$taxon$rank#
-	x$extinct <- x$taxon$extinct#
-	x$taxon_id <- x$taxon$id#
-	x$observations_count <- x$taxon$observations_count#
-	x$iconic_taxon_name <- x$taxon$iconic_taxon_name#
-	x$preferred_common_name <- x$taxon$preferred_common_name#
-	x$conservation_status.iucn <- x$taxon$conservation_status.iucn#
-	x$conservation_status.geoprivacy <- x$taxon$conservation_status.geoprivacy#
-	x$conservation_status.status <- x$taxon$conservation_status.status#
-	x$hierarchy <- x$taxon$min_species_ancestry#
-	# place_ids#
-	x$place_ids <- sapply(x$place_ids, paste, collapse=",")#
-	# user#
-	x$user_id <- x$user$id#
-	x$user_observation_counts <- x$user$observations_count#
-	x$user_identification_count <- x$user$identifications_count#
-	# lat/lng#
-	temp <- strsplit(x$location, ",")#
-	x$lng <- as.numeric(sapply(temp, function(x){return(x[2])}))#
-	x$lat <- as.numeric(sapply(temp, function(x){return(x[1])}))#
-	x <- x[,!is.element(colnames(x), c('observed_on_details','taxon','place_ids','user','location'))]#
-	return(x)#
-}
-j <- 1
-projId <- subset(projects, title==projNames[j])$id#
-#
-	## get number of observations and pages#
-	nObs <- fromJSON(URLencode(paste('http://api.inaturalist.org/v1/observations?project_id=',projId,'&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&per_page=1&order=desc&order_by=created_at&quality_grade=research', sep="")))$total_results#
-	if(nObs %% 200 == 0) {#
-		nPages <- nObs/200#
-	} else {#
-		nPages <- trunc(nObs/200)+1#
-	}#
-	print(paste(projNames[j],": There are ",nObs," observations on ",nPages," pages.", sep=""))#
-#
-	## download data#
-	for(i in 1:3) {#
-		obs <- fromJSON(URLencode(paste("http://api.inaturalist.org/v1/observations?project_id=",projId,"&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&page=",i,"&per_page=200&order=desc&order_by=created_at&quality_grade=research", sep="")))#
-		obs$results <- formatColumns(obs$results, dropColumns)#
-		if(j == 1 & i == 1) {#
-			calCoast <- obs$results#
-		} else {#
-			row.names(obs$results) <- (nrow(calCoast)+1):(nrow(calCoast)+nrow(obs$results))#
-			calCoast <- rbind(calCoast, obs$results)#
-		}			#
-		if(i %% 2 == 0) print(i)#
-	}
-nrow(calCoast)
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
-allHier <- unique(strsplit(allHier,",")[[1]])#
-nameCount  <- length(allHier)
-nameCount
-nameCount %% 150
-nameCount / 150
-ceiling(nameCount/150)
-ceiling(300/150)
-1:ceiling(nameCount/150)*150
-1:ceiling(nameCount/150)*150nameCount
-nameCount
-i <- 1
-i <- 1:8
-i <- 0:8
-i
-i <- 0:(8-1)
-i
-i*150+1
-(i*150+1)+150
-(i*150+1)+150-1
-i <- 1:8
-i*150-150
-first
-last
-1i
-i
-i*150-150
-first <- i*150-150
-first
-i
-i*150
-length(1:150)
-length(151:300)
-seq(1,(150*8),150)
-1:8*150
-nameCount
-seq(1,nameCount, 150)
-seq(1,nameCount, 150)[-1]
-c(1,seq(1,nameCount, 150)[-1])
-1:nameCount*150
-1:(nameCount/150)*150
-nameCount
-c(1:(nameCount/150)*150, nameCount)
-ceiling(nameCount/150)
-starts <- c(1,seq(1,nameCount, 150)[-1])#
-ends <- c(1:(nameCount/150)*150, nameCount)
-length(starts)
-length(ends)
-starts <- c(1,seq(1,nameCount, 150)[-1])#
-ends <- c(1:(nameCount/150)*150, nameCount)
-starts
-ends
-i <- 1
-#### Fetch Taxonomy#
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
-allHier <- unique(strsplit(allHier,",")[[1]])#
-nameCount  <- length(allHier)#
-starts <- c(1,seq(1,nameCount, 150)[-1])#
-ends <- c(1:(nameCount/150)*150, nameCount)#
-thisTaxon <- data.frame()#
-for(i in 1:ceiling(nameCount/150)) {#
-	allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
-	thisTaxon <- rbind(thisTaxon, data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	))#
-}
-i
-#### Fetch Taxonomy#
-myFactor <- 100#
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
-allHier <- unique(strsplit(allHier,",")[[1]])#
-nameCount  <- length(allHier)#
-starts <- c(1,seq(1,nameCount, myFactor)[-1])#
-ends <- c(1:(nameCount/myFactor)*myFactor, nameCount)#
-thisTaxon <- data.frame()#
-for(i in 1:ceiling(nameCount/myFactor)) {#
-	allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
-	thisTaxon <- rbind(thisTaxon, data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	))#
-}
-nrow(thisTaxon)
-head(thisTaxon)
-table(thisTaxon$rank)
-length(allHier)
-length(unique(allHier))
-starts
-ends
-myFactor <- 100#
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
-allHier <- unique(strsplit(allHier,",")[[1]])#
-nameCount  <- length(allHier)#
-starts <- c(1,seq(1,nameCount, myFactor)[-1])#
-ends <- c(1:(nameCount/myFactor)*myFactor, nameCount)#
-thisTaxon <- data.frame()
-i <- 1
-allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
-	thisTaxon <- rbind(thisTaxon, data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	))
-nrow(hier$results)
-hier[[1]]
-hier[[2]]
-hier[[3]]
-#### Fetch Taxonomy#
-myFactor <- 30#
-allHier <- unlist(paste(calCoast$hierarchy, collapse=","))#
-allHier <- unique(strsplit(allHier,",")[[1]])#
-nameCount  <- length(allHier)#
-starts <- c(1,seq(1,nameCount, myFactor)[-1])#
-ends <- c(1:(nameCount/myFactor)*myFactor, nameCount)#
-thisTaxon <- data.frame()#
-for(i in 1:ceiling(nameCount/myFactor)) {#
-	allNames <- paste(allHier[starts[i]:ends[i]], collapse=",")#
-	hier <- fromJSON(URLencode(paste("https://api.inaturalist.org/v1/taxa/",allNames, sep="")))#
-	thisTaxon <- rbind(thisTaxon, data.frame(#
-		'id'=hier$results$id,#
-		'rank'=hier$results$rank,#
-		'name'=hier$results$name, #
-		stringsAsFactors=FALSE#
-	))#
-	if(i*myFactor %% 300 == 0) print(i*myFactor)#
-}
-nrow(thisTaxon)
-head(thisTaxon)
-calCoast$hierarchy <- paste(",",calCoast$hierarchy,",", sep="")
-head(calCoast)
-taxonLevels <- c('kingdom','phylum','subphylum','class','subclass','order','suborder','family','subfamily','genus','subgenus','tribe')#
-calCoast$kingdom <- NA#
-calCoast$phylum <- NA#
-calCoast$subphylum <- NA#
-calCoast$class <- NA#
-calCoast$subclass <- NA#
-calCoast$order <- NA#
-calCoast$suborder <- NA#
-calCoast$family <- NA#
-calCoast$subfamily <- NA#
-calCoast$genus <- NA#
-calCoast$subgenus <- NA#
-calCoast$tribe <- NA#
-calCoast$genus_id <- NA
-head(thisTaxon)
-higherTaxonomy <- thisTaxon
-theseTaxa <- subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels))
-nrow(theseTaxa)
-?subset
-theseTaxa <- data.frame(subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels)), stringsAsFactors=FALSE)
-head(theseTaxa)
-class(theseTaxa$rank)
-class(theseTaxa$name)
-nrow(hitherTaxonomy)
-nrow(higherTaxonomy)
-nrow(theseTaxa)
-?grepl
-head(calCoast)
-grepl(",47178,", calCoast$hierarchy)
-i <- 1
-matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep="") calCoast$hierarchy)
-theseTaxa$id[i]
-matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep=""), calCoast$hierarchy)
-matchingObservations
-# set genus id, if exists#
-	if(theseTaxa$rank[i] == 'genus') {#
-		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]#
-	}
-theseTaxa$rank[i]
-theseTaxa$rank[i] == 'genus'
-i
-matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep=""), calCoast$hierarchy)#
-	# set genus id, if exists#
-	if(theseTaxa$rank[i] == 'genus') {#
-		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]#
-	}#
-	# set higher taxon names#
-	calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i])] <- theseTaxa$name[i]#
-	if(i %% 20 == 0) print(i)
-calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i]] <- theseTaxa$name[i]
-head(calCoast)
-# drop unused taxonomic levels, then loop through each taxon and match to observations#
-theseTaxa <- data.frame(subset(higherTaxonomy, is.element(higherTaxonomy$rank, taxonLevels)), stringsAsFactors=FALSE)#
-for(i in 1:nrow(theseTaxa)) {	#
-	matchingObservations <- grepl(paste(",",theseTaxa$id[i],",",sep=""), calCoast$hierarchy)#
-	# set genus id, if exists#
-	if(theseTaxa$rank[i] == 'genus') {#
-		calCoast$genus_id[matchingObservations] <- theseTaxa$id[i]#
-	}#
-	# set higher taxon names#
-	calCoast[matchingObservations, colnames(calCoast) == theseTaxa$rank[i]] <- theseTaxa$name[i]#
-	if(i %% 20 == 0) print(i)#
-#
-}
-head(calCoast)
-tail(calCoast)
-# set root base for proper file direction#
-init.dir <- getwd()#
-if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
-	my.root <- "/Volumes/Blastoid/noelheim_data"#
-} else {#
-	my.root <- "/Users/noelheim"#
-}#
-Sys.setenv(TZ="America/Los_Angeles")#
-#
-source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
-setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
-#
-library(vegan)#
-library(maps)#
-require(rgdal)#
-#
-crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
-bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')#
-coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
-#
-load("data files/calCoastObs.RData")
-nrow(calCoast)
-head(calCoast)
-range(calCoast$genus_id)
-table(calCoast$rank)
-# set root base for proper file direction#
-init.dir <- getwd()#
-if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
-	my.root <- "/Volumes/Blastoid/noelheim_data"#
-} else {#
-	my.root <- "/Users/noelheim"#
-}#
-Sys.setenv(TZ="America/Los_Angeles")#
-#
-source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
-setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
-#
-library(vegan)#
-library(maps)#
-require(rgdal)#
-#
-crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
-bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')#
-coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
-#
-load("data files/calCoastObs.RData")
-head(calCoast)
-length(unique(calCoast$genus_id))
-length(unique(calCoast$species_id))
-length(unique(calCoast$tribe))
-table(calCoast$kingdom)
-table(calCoast$phylum)
-?over
-# transform coordinates to spatial objects#
-coordinates(calCoast) <- ~ lng + lat#
-proj4string(calCoast) <- CRS("+proj=longlat")#
-calCoast <- spTransform(calCoast, crswgs84)#
-#
-calCoast <- subset(calCoast, rank == 'species')#
-minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))#
-sampleMatrix <- table(calCoast$year, calCoast$taxon_id)#
-#
-rarefied <- rarecurve(sampleMatrix, 1)#
-dev.off()#
-#
-sampleYears <- 2016:2018#
-quartz(height=5, width=15)#
-par(pch=16, mfrow=c(1,3))#
-for(i in 1:3) {#
-	map('state','California')#
-	points(calCoast$lng[calCoast$year==sampleYears[i]], calCoast$lat[calCoast$year==sampleYears[i]], cex=0.5, col='red')#
-}
-## maps#
-cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
-cal <- cal[cal$NAME == 'California',]#
-cal <- spTransform(cal, crswgs84)#
-#
-counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
-counties <- spTransform(counties, crswgs84)#
-#
-mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
-mpas <- spTransform(mpas, crswgs84)#
-#
-# subset individual counties#
-bayArea <- counties[is.element(counties$NAME, bayCounties),]#
-coastalCounties <- counties[is.element(counties$NAME, coastCounties),]#
-#
-temp <- !is.na(over(calCoast, as(bayArea, "SpatialPolygons")))#
-#
-plot(coastalCounties)#
-points(calCoast[temp,], col='blue', pch=16, cex=0.5)
-temp <- !is.na(over(calCoast, as(mpas, "SpatialPolygons")))#
-#
-plot(coastalCounties)#
-points(calCoast[temp,], col='blue', pch=16, cex=0.5)
-head(temp)
-sum(temp)
-sum(temp)/length(temp)
-provinces <- data.frame(#
-	oregonian.columbian = c(48, 55),#
-	oregonian.mendocinian = c(37, 48),#
-	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
-	californian = c(27.8, 34.45)#
-)
-provinces
-provinces <- t(data.frame(#
-	oregonian.columbian = c(48, 55),#
-	oregonian.mendocinian = c(37, 48),#
-	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
-	californian = c(27.8, 34.45)#
-))
-provinces
-# Add Valentine's (1966) bioprovinces#
-provinces <- t(data.frame(#
-	oregonian.columbian = c(48, 55),#
-	oregonian.mendocinian = c(37, 48),#
-	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
-	californian = c(27.8, 34.45)#
-)); colnames(provinces) <- c('southern','northern')
-provinces
-head(calCoast$lng)
-head(calCoast)
-class(calCoast$lng)
-rownames(provinces)
-for(i in 1:nrow(provinces)) {#
-	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
-}#
-calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))
-nrow(provinces)
-i
-rownames(provinces)[i]
-calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]]
-class(provinces)
-# Add Valentine's (1966) bioprovinces#
-provinces <- data.frame(t(data.frame(#
-	oregonian.columbian = c(48, 55),#
-	oregonian.mendocinian = c(37, 48),#
-	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
-	californian = c(27.8, 34.45)#
-))); colnames(provinces) <- c('southern','northern')#
-#
-calCoast$province <- NA#
-for(i in 1:nrow(provinces)) {#
-	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
-}#
-calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))
-head(calCoast)
-table(calCoast$province)
-table(calCoast$province, calCoast$year)
-# Add Valentine's (1966) bioprovinces#
-provinces <- data.frame(t(data.frame(#
-	#oregonian.columbian = c(48, 55),#
-	oregonian.mendocinian = c(37, 48),#
-	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
-	californian = c(27.8, 34.45)#
-))); colnames(provinces) <- c('southern','northern')#
-#
-calCoast$province <- NA#
-for(i in 1:nrow(provinces)) {#
-	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
-}#
-calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))
-table(calCoast$province, calCoast$year)
-map(coastCounties)
-plot(coastCounties)
-crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
-bayCounties <- c('Marin','Sonoma','San Mateo','Napa','Alameda','Contra Costa','Solano','San Francisco','Santa Clara')#
-coastCounties <- c(bayCounties, 'Del Norte','Humboldt','Mendocino','Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
-#
-## load maps#
-cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
-cal <- cal[cal$NAME == 'California',]#
-cal <- spTransform(cal, crswgs84)#
-#
-counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
-counties <- spTransform(counties, crswgs84)#
-#
-mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
-mpas <- spTransform(mpas, crswgs84)
-crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
-bayCounties <- c('Sonoma','Marin','Napa','Contra Costa','Solano','San Francisco','Alameda','San Mateo','Santa Clara')#
-coastCounties <- c('Del Norte','Humboldt','Mendocino',bayCounties,'Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')
-coastCounties
-temp <- !is.na(over(calCoast, as(counties, "SpatialPolygons")))
-head(temp)
-temp <- (over(calCoast, as(counties, "SpatialPolygons")))
-head(temp)
-counties$NAME
-temp <- (over(calCoast, as(coastCounties, "SpatialPolygons")))
-coastalCounties <- counties[is.element(counties$NAME, coastCounties),]
-temp <- (over(calCoast, as(coastalCounties, "SpatialPolygons")))
-head(temp)
-coastalCounties$name
-coastalCounties$NAME
-head(calCoast)
-# subset individual counties#
-bayArea <- counties[is.element(counties$NAME, bayCounties),]#
-coastalCounties <- counties[is.element(counties$NAME, coastCounties),]
-temp <- coastalCounties$NAME[over(calCoast, as(coastalCounties, "SpatialPolygons"))]
-head(temp)
 table(temp)
-levels(temp)
+length(temp)
+length(unique(temp))
+?over
+temp <- over(calCoast, counties))
+temp <- over(calCoast, counties)
 head(temp)
-calCoast$county <- coastalCounties$NAME[over(calCoast, as(coastalCounties, "SpatialPolygons"))]#
-levels(calCoast$county) <- coastCounties
-sort(table(temp))
-calCoast$county <- factor(calCoast$county, levels = coastCounties)
-levels(calCoast$county)
-calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
-levels(calCoast$county)
-table(calCoast$county)
-sort(table(calCoast$county))
-sort(table(calCoast$county, calCoast$year))
-table(calCoast$county, calCoast$year)
+counties$NAME[3]
+table(temp$NAME)
+sort(table(temp$NAME))
+sum(sort(table(temp$NAME)))
+nrow(calCoast)
+head(over(calCoast, counties)$NAME)
 # add county#
-calCoast$county <- coastalCounties$NAME[over(calCoast, as(counties, "SpatialPolygons"))]#
+calCoast$county <- over(calCoast, counties)$NAME#
 calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
-coastCounties
-rev(coastCounties)
-nrow(subset(calCoast, is.na(county)))/nrow(calCoast)
-plot(cal)
-points(subset(calCoast, is.na(county)), col='red')
-plot(counties, add=T, col='blue', ;wd=0.5)
-plot(counties, add=T, col='blue', lwd=0.5)
-plot(counties, add=T, lwd=0.5)
-plot(counties, lwd=0.5)
-plot(coastalCounties, lwd=0.5)
-points(subset(calCoast, is.na(county)), col='red', cex=0.5, pch=16)
-## load maps#
-cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
-cal <- cal[cal$NAME == 'California',]#
-cal <- spTransform(cal, crswgs84)#
-#
-counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
-counties <- spTransform(counties, crswgs84)#
-#
-mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
-mpas <- spTransform(mpas, crswgs84)#
-#
-# subset individual counties#
-bayArea <- counties[is.element(counties$NAME, bayCounties),]#
-coastalCounties <- counties[is.element(counties$NAME, coastCounties),]#
+plot(coastalCounties);nrow(subset(calCoast, is.na(county)))
+points(subset(calCoast, is.na(county)), col='red',pch=16, cex=0.5)
+table(calCoast$county, calCoast$year)
+apply(table(calCoast$county, calCoast$year)),1, min)
+apply(data.frame(table(calCoast$county, calCoast$year))),1, min)
+apply(table(calCoast$county, calCoast$year),1, min)
+sort(apply(table(calCoast$county, calCoast$year),1, min))
+apply(table(calCoast$county, calCoast$year),1, min)
+temp <- apply(table(calCoast$county, calCoast$year),1, min)
+names(temp)[temp >= 100]
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties)], col='red')
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red')
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA)
+plot(coastalCounties)
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA)
+plot(coastalCounties)
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA, add=T)
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA)
+plot(coastalCounties, add=T)
+nrow(calCoast)
+nrow(subset(calCoast, !is.na(species_id)))/nrow(calCoast)
+calCoast <- subset(calCoast, !is.na(species_id))
+table(calCoast$rank)
+minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))
+minDiv
+sampleSize <- table(calCoast$county, calCoast$year)
+samlpeSize
+sampleSize
+unassigned <- subset(calCoast, is.na(county))
+utmStr <- "+proj=utm +zone=%d +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"#
+crsUTM32 <- CRS(sprintf(utmStr, 32))#
+countiesUTM <- spTransform(coastalCounties, crsUTM32)
+nrow(unassigned)
+head(unassigned)
+length(unique(calCoast$id))
+nrow(calCoast)
+unassigned$id[1]
+unassigned$id[91]
+i <- 1
+ptsUTM <- spTransform(unassigned[i,], crsUTM32)
+pUTM$NAME[which.min(gDistance(ptsUTM[i,], pUTM, byid=TRUE))]
+countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
+? gDistance
+require(rgeos)
+? gDistance
+countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
+## For each point, find name of nearest polygon (in this case, Belgian cantons)#
+for (i in 1:nrow(unassigned)) {#
+	ptsUTM <- spTransform(unassigned[i,], crsUTM32)#
+    calCoast$county[calCoast$id == unassgned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
+}
+unassigned <- subset(calCoast, is.na(county))#
+## For each point, find name of nearest polygon (in this case, Belgian cantons)#
+for (i in 1:nrow(unassigned)) {#
+	ptsUTM <- spTransform(unassigned[i,], crsUTM32)#
+    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
+}
 load("data files/calCoastObs.RData")#
 # transform coordinates to spatial objects#
 coordinates(calCoast) <- ~ lng + lat#
@@ -606,8 +92,541 @@ for(i in 1:nrow(provinces)) {#
 calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))#
 #
 # add county#
-calCoast$county <- coastalCounties$NAME[over(calCoast, as(counties, "SpatialPolygons"))]#
-calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
-plot(coastalCounties, lwd=0.5)
-points(subset(calCoast, is.na(county)), col='red', cex=0.5, pch=16)
+calCoast$county <- over(calCoast, counties)$NAME#
+calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))#
+#
+# assign nearest county to observations outside of official county boundaries#
+##  First project data into a planar coordinate system (here UTM zone 32)#
+utmStr <- "+proj=utm +zone=%d +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"#
+crsUTM32 <- CRS(sprintf(utmStr, 32))#
+countiesUTM <- spTransform(coastalCounties, crsUTM32)#
+#
+unassigned <- subset(calCoast, is.na(county))#
+## For each point, find name of nearest polygon (in this case, Belgian cantons)#
+for (i in 1:nrow(unassigned)) {#
+	ptsUTM <- spTransform(unassigned[i,], crsUTM32)#
+    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
+}
+i
+nrow(unassigned)
+ptsUTM
+head(unassigned)
+for (i in 1:nrow(unassigned)) {#
+	ptsUTM <- spTransform(unassigned$coordinates[i], crsUTM32)#
+    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
+}
+i
+unassigned$coordinates
+i
+calCoast$county[calCoast$id == unassigned$id[i]]
+ountiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
+countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
+i <- 2
+countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
+head(unassigned)
+plot(countiesUTM)
+plot(countiesUTM)
+points(unassigned, col='red',pch=16, cex=0.5)
+unassigned <- subset(calCoast, is.na(county))#
+spTransform(unassigned, crsUTM32)#
+## For each point, find name of nearest polygon (in this case, Belgian cantons)#
+for (i in 1:nrow(unassigned)) {#
+    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(unassigned[i,], countiesUTM, byid=TRUE))]#
+}
+warnings()
+plot(countiesUTM)
+points(unassigned, col='red',pch=16, cex=0.5)
+unassigned <- subset(calCoast, is.na(county))#
+unassignedUTM <- spTransform(unassigned, crsUTM32)#
+## For each point, find name of nearest polygon (in this case, Belgian cantons)#
+for (i in 1:nrow(unassigned)) {#
+    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]#
+}
+plot(countiesUTM)
+points(unassignedUTM, col='red',pch=16, cex=0.5)
+points(unassignedUTM, col='red',pch=16, cex=0.5)
+unassignedUTM <- spTransform(unassigned, crsUTM32)
+head(unassigned)
+head(calCoast)
+remove(unassigned)
+unassigned <- subset(calCoast, is.na(county))
+head(unassigned)
+plot(coastalCounties)
+points(calCoast)
+unassigned <- subset(calCoast, is.na(county))#
+unassignedUTM <- spTransform(unassigned, crsUTM32)
+# set root base for proper file direction#
+init.dir <- getwd()#
+if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
+	my.root <- "/Volumes/Blastoid/noelheim_data"#
+} else {#
+	my.root <- "/Users/noelheim"#
+}#
+Sys.setenv(TZ="America/Los_Angeles")#
+#
+source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));#
+setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));#
+#
+library(vegan)#
+library(maps)#
+require(rgdal)#
+require(rgeos)#
+#
+# mapping info #
+crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection#
+bayCounties <- c('Sonoma','Marin','Napa','Contra Costa','Solano','San Francisco','Alameda','San Mateo','Santa Clara')#
+coastCounties <- c('Del Norte','Humboldt','Mendocino',bayCounties,'Santa Cruz','Monterey','San Luis Obispo','Santa Barbara','Ventura','Los Angeles','Orange','San Diego')#
+focalCounties <- c("San Diego","Orange","Los Angeles","Monterey","Santa Cruz","San Mateo","Marin","Sonoma","Humboldt")#
+## load maps#
+cal <- readOGR(dsn = "data files/cb_2017_us_state_500k/", layer = "cb_2017_us_state_500k")#
+cal <- cal[cal$NAME == 'California',]#
+cal <- spTransform(cal, crswgs84)#
+#
+counties <- readOGR(dsn = "data files/CA_Counties/", layer = "CA_Counties_TIGER2016")#
+counties <- spTransform(counties, crswgs84)#
+#
+mpas <- readOGR(dsn = "data files/CA_MPA/", layer = "California_Marine_Protected_Areas_[ds582]")#
+mpas <- spTransform(mpas, crswgs84)#
+#
+# extract meaningful groups of counties#
+bayArea <- counties[is.element(counties$NAME, bayCounties),]#
+coastalCounties <- counties[is.element(counties$NAME, coastCounties),]#
+#
+# load in observation#
+load("data files/calCoastObs.RData")#
+# transform coordinates to spatial objects#
+coordinates(calCoast) <- ~ lng + lat#
+proj4string(calCoast) <- CRS("+proj=longlat")#
+calCoast <- spTransform(calCoast, crswgs84)#
+#
+# Add Valentine's (1966) bioprovinces#
+provinces <- data.frame(t(data.frame(#
+	#oregonian.columbian = c(48, 55),#
+	oregonian.mendocinian = c(37, 48),#
+	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
+	californian = c(27.8, 34.45)#
+))); colnames(provinces) <- c('southern','northern')#
+#
+calCoast$province <- NA#
+for(i in 1:nrow(provinces)) {#
+	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
+}#
+calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))#
+#
+# add county#
+calCoast$county <- over(calCoast, counties)$NAME#
+calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))#
+#
+# assign nearest county to observations outside of official county boundaries#
+##  First project data into a planar coordinate system (here UTM zone 32)#
+utmStr <- "+proj=utm +zone=%d +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"#
+crsUTM32 <- CRS(sprintf(utmStr, 32))#
+countiesUTM <- spTransform(coastalCounties, crsUTM32)#
+#
+unassigned <- subset(calCoast, is.na(county))#
+unassignedUTM <- spTransform(unassigned, crsUTM32)
+head(unassignedUTM)
+plot(coastalCounties)
+plot(coastalCountiesUTM)
+plot(countiesUTM)
+points(unassignedUTM, col='red',pch=16, cex=0.5)
+i <- 1
+countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]
+i <- 2
+countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]
+i <- 33
+countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]
+for (i in 1:nrow(unassigned)) {#
+    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]#
+}
+subset(calCoast, is.na(county))
+subset(calCoast, county=="")
+table(calCoast$county)
+# subset to species#
+calCoast <- subset(calCoast, !is.na(species_id))#
+minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))#
+sampleMatrix <- table(calCoast$year, calCoast$taxon_id)#
+#
+sampleSize <- table(calCoast$county, calCoast$year)
+sampleSize
+sampleSize
+sampleMatrix <- subset(sampleMatrix, apply(sampleMatrix,2,min) >= 100)
+sampleMatrix
+sampleMatrix <- subset(sampleMatrix, apply(sampleMatrix,1,min) >= 100)
+sampleMatrix <- table(calCoast$year, calCoast$taxon_id)#
+sampleMatrix <- subset(sampleMatrix, apply(sampleMatrix,1,min) >= 100)
+sampleMatrix
+sampleMatrix <- table(calCoast$year, calCoast$taxon_id)
+sampleMatrix
+sampleSize <- table(calCoast$county, calCoast$year)#
+sampleSize <- subset(sampleSize, apply(sampleSize,1,min) >= 100)
+sampleSize
+apply(sampleSize,1,min)
+sampleSize <- table(calCoast$county, calCoast$year)
+apply(sampleSize,1,min)
+apply(sampleSize,1,min) >= 100
+sampleSize <- table(calCoast$county, calCoast$year)#
+sampleSize <- sampleSize[apply(sampleSize,1,min) >= 100,]
+sampleSize
+class(sampleSize)
+sampleSize <- table(calCoast$county, calCoast$year)#
+sampleSize <- data.frame(sampleSize[apply(sampleSize,1,min) >= 100,])
+sampleSize
+sampleSize <- table(calCoast$county, calCoast$year)#
+sampleSize <- as.data.frame(sampleSize[apply(sampleSize,1,min) >= 100,])
+sampleSize
+dimnames(sampleSize)
+sampleSize <- table(calCoast$county, calCoast$year)#
+sampleSize <- sampleSize[apply(sampleSize,1,min) >= 100,]
+dimnames(sampleSize)
+rarefiedDiversity <- data.frame(matrix(NA, nrow=nrow(sampleSize), ncol=ncol(sampleSize), dimnames=dimnames(sampleSize)))
+rarefiedDiversity
+i
+i <- 1
+sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])
+sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])#
+	rarefied <- rarecurve(sampleMatrix, 1)
+rarefied
+sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])#
+	rarefied <- rarecurve(sampleMatrix, 1)
+sampleSize[i,]
+min(sampleSize[i,])
+minSampleSize
+min(sampleSize)
+?rarecurv
+?rarecurve
+minSample <- min(sampleSize[i,])#
+	sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])#
+	rarefied <- rarefy(sampleMatrix, minSample)
+rarefied
+rarefied[[1]]
+rarefied[1]
+as.numeric(rarefied)
+rarefiedDiversity <- data.frame(matrix(NA, nrow=nrow(sampleSize), ncol=ncol(sampleSize), dimnames=dimnames(sampleSize)))#
+rarefiedDiversityEqSamp <- rarefiedDiversity#
+for(i in 1:nrow(sampleSize)) {#
+	minSample <- min(sampleSize[i,])#
+	sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])#
+	rarefied <- rarefy(sampleMatrix, minSample)	#
+	rarefiedDiversity[i,] <- as.numeric(rarefied)#
+	rarefied <- rarefy(sampleMatrix, min(sampleSize))#
+	rarefiedDiversityEqSamp[i,] <- as.numeric(rarefied)#
+}
+rarefiedDiversity
+barplot(rarefiedDiversity)
+class(rarefiedDiversity)
+barplot(matrix(rarefiedDiversity))
+class(rarefiedDiversity)
+length(rarefiedDiversity)
+nrow(rarefiedDiversity)
+ncol(rarefiedDiversity)
+class(rarefiedDiversity$X2016)
+?barplot
+barplot(rarefiedDiversity[1,])
+barplot(rarefiedDiversity[1,])
+barplot(as.vector(rarefiedDiversity[1,]))
+rarefiedDiversity[1,]
+class(rarefiedDiversity[1,])
+barplot(as.numeric(rarefiedDiversity[1,]))
+barplot(as.numeric(rarefiedDiversity[1,]), horiz=TRUE)
+barplot(as.numeric(rarefiedDiversityEqSamp[1,]), horiz=TRUE)
+barplot(as.numeric(rarefiedDiversityEqSamp[1,]))
+getwd()
+2:1
+nrow(sampleSize)
+?matrix
+matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2)
+plot(coastalCounties, col=c('blue','lightblue'))
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col=c('blue','lightblue'))#
+plot(coastalCounties, add=TRUE)
+plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col=c('blue','lightblue'))#
+plot(coastalCounties, add=TRUE)
+i %% 2
+i %% 2
+1:9 %% 2
+1:9 %% 2 + 1
+?spTransofrm
+?spTransoform
+?spTransform
+class(counties)
+plot(coastalCounties, border=NA)
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2), widths=c(0.4, 0.6), byrow=FALSE)#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampeSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == colnames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+dev.off()
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampeSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == colnames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+dev.off()
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == colnames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+dev.off()
+i
+colnames(sampleSize)[i]
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+dev.off()
+i <- 1
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]))
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]));box()
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]), );box()
+?barplot
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue");box()
+?par
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue", xaxs="i")
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue", xaxs="s")
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue", xaxs="r")
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])#
+}#
+dev.off()
+barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
+par(las=1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
+?par
+par(las=1, c(4, 4, 3, 0.5) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
+par(las=1, c(4, 4, 3, 0.5) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
+par(las=1, c(2, 4, 3, 0.5) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
+par(las=1, c(2, 4, 3, 0.5) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
+par(las=1, c(2, 4, 3, 0.5) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
+par(las=1, c(2, 4, 2, 0) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
+par(las=1, mar=c(2, 4, 2, 0) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
+par(las=1, mar=c(4, 4, 2, 0) + 0.1)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
+par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Estimated species")#
+}#
+dev.off()
+max(sampleSize)
+max(rarefiedDiversityEqSamp)
+max(rarefiedDiversity)
+matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)),rep(nrow(sampleSize)+2,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE)
+matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)),rep(nrow(sampleSize)+2,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
+matrix(c((rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c((rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
+}#
+dev.off()
+layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
+}#
+dev.off()
+dev.off()
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
+}#
+dev.off()
+matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(rep(nrow(sampleSize)+2),nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
+}#
+dev.off()
+matrix(c(rep(nrow(sampleSize)+2),nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
+nrow(sampleSize)+1):2
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
+}#
+dev.off()
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
+}#
+dev.off()
+pretty(range(rarefiedDiversityEqSamp))
+pretty(c(0,max(rarefiedDiversityEqSamp)))
+c(0,max(rarefiedDiversityEqSamp))
+plot(1:10, type="n", axes=FALSE, xlab="",yalb="")
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(1:10, type="n", axes=FALSE, xlab="",ylab="")
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(1:10, type="n", axes=FALSE, xlab="",ylab="")#
+text(5,5, "Estimated number of Species", cex=1.25, srt=90)
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(4, 2, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="", ylim=c(0,max(rarefiedDiversityEqSamp)))#
+}#
+#
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(1:10, type="n", axes=FALSE, xlab="",ylab="")#
+text(5,5, "Estimated number of Species", cex=1.25, srt=90)#
+dev.off()
+plotColors <- c('blue','lightblue')#
+pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
+layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
+plot(coastalCounties, border=NA)#
+for(i in 1:nrow(sampleSize)) {#
+	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
+}#
+plot(coastalCounties, add=TRUE)#
+#
+for(i in 1:nrow(sampleSize)) {#
+	par(las=1, mar=c(3, 2, 1.5, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
+	if(i == 1) {#
+		xlabels <- 2016:2018#
+	} else {#
+		xlabels <- NA#
+	}#
+	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="", ylim=c(0,max(rarefiedDiversityEqSamp)), yaxt="n")#
+	axis(side=2, at=c(0,50,100))#
+}#
+#
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(1:10, type="n", axes=FALSE, xlab="",ylab="")#
+text(5,5, "Estimated number of Species", cex=1.25, srt=90)#
+dev.off()
 q()
