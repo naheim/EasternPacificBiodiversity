@@ -1,160 +1,142 @@
-table(temp)
-length(temp)
-length(unique(temp))
-?over
-temp <- over(calCoast, counties))
-temp <- over(calCoast, counties)
-head(temp)
-counties$NAME[3]
-table(temp$NAME)
-sort(table(temp$NAME))
-sum(sort(table(temp$NAME)))
-nrow(calCoast)
-head(over(calCoast, counties)$NAME)
-# add county#
-calCoast$county <- over(calCoast, counties)$NAME#
-calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))
-plot(coastalCounties);nrow(subset(calCoast, is.na(county)))
-points(subset(calCoast, is.na(county)), col='red',pch=16, cex=0.5)
-table(calCoast$county, calCoast$year)
-apply(table(calCoast$county, calCoast$year)),1, min)
-apply(data.frame(table(calCoast$county, calCoast$year))),1, min)
-apply(table(calCoast$county, calCoast$year),1, min)
-sort(apply(table(calCoast$county, calCoast$year),1, min))
-apply(table(calCoast$county, calCoast$year),1, min)
-temp <- apply(table(calCoast$county, calCoast$year),1, min)
-names(temp)[temp >= 100]
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties)], col='red')
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red')
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA)
-plot(coastalCounties)
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA)
-plot(coastalCounties)
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA, add=T)
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col='red', border=NA)
-plot(coastalCounties, add=T)
-nrow(calCoast)
-nrow(subset(calCoast, !is.na(species_id)))/nrow(calCoast)
-calCoast <- subset(calCoast, !is.na(species_id))
-table(calCoast$rank)
-minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))
-minDiv
-sampleSize <- table(calCoast$county, calCoast$year)
-samlpeSize
-sampleSize
-unassigned <- subset(calCoast, is.na(county))
-utmStr <- "+proj=utm +zone=%d +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"#
-crsUTM32 <- CRS(sprintf(utmStr, 32))#
-countiesUTM <- spTransform(coastalCounties, crsUTM32)
-nrow(unassigned)
-head(unassigned)
-length(unique(calCoast$id))
-nrow(calCoast)
-unassigned$id[1]
-unassigned$id[91]
-i <- 1
-ptsUTM <- spTransform(unassigned[i,], crsUTM32)
-pUTM$NAME[which.min(gDistance(ptsUTM[i,], pUTM, byid=TRUE))]
-countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
-? gDistance
-require(rgeos)
-? gDistance
-countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
-## For each point, find name of nearest polygon (in this case, Belgian cantons)#
-for (i in 1:nrow(unassigned)) {#
-	ptsUTM <- spTransform(unassigned[i,], crsUTM32)#
-    calCoast$county[calCoast$id == unassgned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
-}
-unassigned <- subset(calCoast, is.na(county))#
-## For each point, find name of nearest polygon (in this case, Belgian cantons)#
-for (i in 1:nrow(unassigned)) {#
-	ptsUTM <- spTransform(unassigned[i,], crsUTM32)#
-    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
-}
-load("data files/calCoastObs.RData")#
-# transform coordinates to spatial objects#
-coordinates(calCoast) <- ~ lng + lat#
-proj4string(calCoast) <- CRS("+proj=longlat")#
-calCoast <- spTransform(calCoast, crswgs84)#
+liths
+table(liths$lith_type)
+table(liths$type)
+table(liths$class)
+nrow(noam)
+length(levels(noam$lith))
+head(noam$lith)
+noam <- read.csv("https://macrostrat.org/api/units?interval_name=Phanerozoic,Pliocene&response=long&format=csv&project_id=1", header=TRUE)
+timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages", header=TRUE)
+timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
+timescale
+timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
+timescale
+timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&?late_age=2.588&early_age=541", header=TRUE)
+timescale
+timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv&late_age=2.588&early_age=541", header=TRUE)
+timescale
+timescale <- read.csv("https://macrostrat.org/api/defs/intervals?timescale=international%20ages&format=csv", header=TRUE)
+timescale
+timescale <- subset(timescale, b_age >= b_age[name == 'Piacenzian'])
+timescale
+12.99*36
+9.99*36
+?predict
+10.5/89
+?scale
+head(noam)
+nrow(subset(noam, is.na(strat_name_id)))
+nrow(subset(noam, is.na(strat_name_id)))/nrow(noam)
+range(subset(noam, is.na(strat_name_id))$b_age)
+2.9e-3
+2.9e3
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?datainfo&rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
+nrow(x)
+head(x)
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?rowcount&base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian", header=T)
+head(x)
+nrow(x)
+table(x$measurement)
+length(unique(x$specimen_no))
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=full", header=T)
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class", header=T)
+nrow(x)
+head(x)
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=T)
+nrow(x)
+length(unique(x$accepted_name))
+y <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
+head(y)
+nrow(y)
+range(y$maxSize)
+range(x$min, na.rm=T)
+range(x$max, na.rm=T)
+head(x)
+table(x$authorizer)
+levels(x$accepted_name)
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian,Triassic&show=spec,class,ref,entname", header=TRUE)#
+permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
+nrow(permBrachs)
+table(x$authorizer)
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Carboniferous,Triassic&show=spec,class,ref,entname", header=TRUE)#
+permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
+nrow(permBrachs)
+table(x$authorizer)
+4546+116
+hist(permBrachs$maxAge)
+x <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
+permBrachs <- data.frame('maxSize'=tapply(x$average, x$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(x$max_ma, x$accepted_name, max, na.rm=TRUE),'minAge'=tapply(x$min_ma, x$accepted_name, min, na.rm=TRUE))
+head(x)
+taply(x$average, x$measurement, max)
+tapply(x$average, x$measurement, max)
+rawData <- read.csv(file="https://paleobiodb.org/data1.2/specs/measurements.csv?base_name=Brachiopoda&taxon_reso=species&interval=Permian&show=spec,class,ref,entname", header=TRUE)#
 #
-# Add Valentine's (1966) bioprovinces#
-provinces <- data.frame(t(data.frame(#
-	#oregonian.columbian = c(48, 55),#
-	oregonian.mendocinian = c(37, 48),#
-	oregonian.montereyan = c(34.45, 37), # first point is Point Conception#
-	californian = c(27.8, 34.45)#
-))); colnames(provinces) <- c('southern','northern')#
+speciesSizes <- data.frame('maxSize'=tapply(rawData$average, rawData$accepted_name, min, na.rm=TRUE), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE))#
 #
-calCoast$province <- NA#
-for(i in 1:nrow(provinces)) {#
-	calCoast$province[calCoast$lat >= provinces$southern[i] & calCoast$lat < provinces$northern[i]] <- rownames(provinces)[i]#
-}#
-calCoast$province <- factor(calCoast$province, levels=rev(rownames(provinces)))#
-#
-# add county#
-calCoast$county <- over(calCoast, counties)$NAME#
-calCoast$county <- factor(calCoast$county, levels = rev(coastCounties))#
-#
-# assign nearest county to observations outside of official county boundaries#
-##  First project data into a planar coordinate system (here UTM zone 32)#
-utmStr <- "+proj=utm +zone=%d +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"#
-crsUTM32 <- CRS(sprintf(utmStr, 32))#
-countiesUTM <- spTransform(coastalCounties, crsUTM32)#
-#
-unassigned <- subset(calCoast, is.na(county))#
-## For each point, find name of nearest polygon (in this case, Belgian cantons)#
-for (i in 1:nrow(unassigned)) {#
-	ptsUTM <- spTransform(unassigned[i,], crsUTM32)#
-    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
+genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unqiue(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
+genusSizes <- data.frame('genus'=levels(rawData$genus), 'nSpecies'=tapply(rawData$accepted_name, rawData$genus, function(x){return(length(unique(x)))}), 'maxAge'=tapply(rawData$max_ma, rawData$genus, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$genus, min, na.rm=TRUE))
+head(genusSizes)
+nrow(genusSizes)
+tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE)
+head(tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
+head(genusSizes)
+speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE))
+head(speciesSizes)
+speciesSizes <- data.frame('maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
+head(speciesSizes)
+plot(speciesSizes$length, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
+plot(speciesSizes$maxDim, speciesSizes$width, pch=16); abline(a=0,b=1,lty=2, col='red')
+nrow(speciesSizes)
+nrow(subset(speciesSizes, width==maxDim))
+nrow(subset(speciesSizes, width==maxDim))/nrow(speciesSizes)
+tapply(rawData$genus, rawData$accepted_name, max)
+tapply(rawData$genus, rawData$accepted_name, function(x){return(x[1])})
+tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})
+head(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))}))
+speciesSizes <- data.frame('genus'=factor(tapply(rawData$genus, rawData$accepted_name, function(x){return(as.character(x[1]))})), 'maxAge'=tapply(rawData$max_ma, rawData$accepted_name, max, na.rm=TRUE),'minAge'=tapply(rawData$min_ma, rawData$accepted_name, min, na.rm=TRUE), tapply(rawData$average, list(rawData$accepted_name, rawData$measurement), max, na.rm=TRUE), 'maxDim' = tapply(rawData$average, rawData$accepted_name, max, na.rm=TRUE))
+head(speciesSizes)
+range(speciesSizes$maxDim)
+genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$max_ma, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$min_ma, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
+genusSizes <- data.frame('nSpecies'=table(speciesSizes$genus), 'maxAge'=tapply(speciesSizes$maxAge, speciesSizes$genus, max, na.rm=TRUE),'minAge'=tapply(speciesSizes$minAge, speciesSizes$genus, min, na.rm=TRUE), 'meanSize'=tapply(speciesSizes$maxDim, speciesSizes$genus, mean))
+head(genusSizes)
+q()
+4*5
+67000/60/50
+58/40/50
+58000/40/50
+67000/56/50
+58000/41/50
+1334/270
+1334/263
+(1334-26)/263
+(1334-263)/263
+(1334-263)/
+(1334-263)
+240-145
+(240-145)/12
+169-146
+(240-121)/12
+205/8
+244/8
+q()
+?png
+q()
+69.5-58
+(69.5-58)/69.5
+(69.4-58)/69.4
+q()
+for(i in 1:10) {}
+for(i in 1:10) {#
+	print(i)#
 }
-i
-nrow(unassigned)
-ptsUTM
-head(unassigned)
-for (i in 1:nrow(unassigned)) {#
-	ptsUTM <- spTransform(unassigned$coordinates[i], crsUTM32)#
-    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]#
-}
-i
-unassigned$coordinates
-i
-calCoast$county[calCoast$id == unassigned$id[i]]
-ountiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
-countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
-i <- 2
-countiesUTM$NAME[which.min(gDistance(ptsUTM[i,], countiesUTM, byid=TRUE))]
-head(unassigned)
-plot(countiesUTM)
-plot(countiesUTM)
-points(unassigned, col='red',pch=16, cex=0.5)
-unassigned <- subset(calCoast, is.na(county))#
-spTransform(unassigned, crsUTM32)#
-## For each point, find name of nearest polygon (in this case, Belgian cantons)#
-for (i in 1:nrow(unassigned)) {#
-    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(unassigned[i,], countiesUTM, byid=TRUE))]#
-}
-warnings()
-plot(countiesUTM)
-points(unassigned, col='red',pch=16, cex=0.5)
-unassigned <- subset(calCoast, is.na(county))#
-unassignedUTM <- spTransform(unassigned, crsUTM32)#
-## For each point, find name of nearest polygon (in this case, Belgian cantons)#
-for (i in 1:nrow(unassigned)) {#
-    calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]#
-}
-plot(countiesUTM)
-points(unassignedUTM, col='red',pch=16, cex=0.5)
-points(unassignedUTM, col='red',pch=16, cex=0.5)
-unassignedUTM <- spTransform(unassigned, crsUTM32)
-head(unassigned)
-head(calCoast)
-remove(unassigned)
-unassigned <- subset(calCoast, is.na(county))
-head(unassigned)
-plot(coastalCounties)
-points(calCoast)
-unassigned <- subset(calCoast, is.na(county))#
-unassignedUTM <- spTransform(unassigned, crsUTM32)
+for(i in 1:10) {print(i)}
+for(i in 1:10){print(i)}
+q()
+273-16
+273-266
+q()
+36.5*pi
 # set root base for proper file direction#
 init.dir <- getwd()#
 if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanford.edu"))) {#
@@ -224,84 +206,18 @@ crsUTM32 <- CRS(sprintf(utmStr, 32))#
 countiesUTM <- spTransform(coastalCounties, crsUTM32)#
 #
 unassigned <- subset(calCoast, is.na(county))#
-unassignedUTM <- spTransform(unassigned, crsUTM32)
-head(unassignedUTM)
-plot(coastalCounties)
-plot(coastalCountiesUTM)
-plot(countiesUTM)
-points(unassignedUTM, col='red',pch=16, cex=0.5)
-i <- 1
-countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]
-i <- 2
-countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]
-i <- 33
-countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]
+unassignedUTM <- spTransform(unassigned, crsUTM32)#
+## For each point, find name of nearest polygon (in this case, Belgian cantons)#
 for (i in 1:nrow(unassigned)) {#
     calCoast$county[calCoast$id == unassigned$id[i]] <- countiesUTM$NAME[which.min(gDistance(unassignedUTM[i,], countiesUTM, byid=TRUE))]#
-}
-subset(calCoast, is.na(county))
-subset(calCoast, county=="")
-table(calCoast$county)
+}#
 # subset to species#
 calCoast <- subset(calCoast, !is.na(species_id))#
 minDiv <- length(unique(calCoast$name[calCoast$year == 2016]))#
-sampleMatrix <- table(calCoast$year, calCoast$taxon_id)#
 #
-sampleSize <- table(calCoast$county, calCoast$year)
-sampleSize
-sampleSize
-sampleMatrix <- subset(sampleMatrix, apply(sampleMatrix,2,min) >= 100)
-sampleMatrix
-sampleMatrix <- subset(sampleMatrix, apply(sampleMatrix,1,min) >= 100)
-sampleMatrix <- table(calCoast$year, calCoast$taxon_id)#
-sampleMatrix <- subset(sampleMatrix, apply(sampleMatrix,1,min) >= 100)
-sampleMatrix
-sampleMatrix <- table(calCoast$year, calCoast$taxon_id)
-sampleMatrix
 sampleSize <- table(calCoast$county, calCoast$year)#
-sampleSize <- subset(sampleSize, apply(sampleSize,1,min) >= 100)
-sampleSize
-apply(sampleSize,1,min)
-sampleSize <- table(calCoast$county, calCoast$year)
-apply(sampleSize,1,min)
-apply(sampleSize,1,min) >= 100
-sampleSize <- table(calCoast$county, calCoast$year)#
-sampleSize <- sampleSize[apply(sampleSize,1,min) >= 100,]
-sampleSize
-class(sampleSize)
-sampleSize <- table(calCoast$county, calCoast$year)#
-sampleSize <- data.frame(sampleSize[apply(sampleSize,1,min) >= 100,])
-sampleSize
-sampleSize <- table(calCoast$county, calCoast$year)#
-sampleSize <- as.data.frame(sampleSize[apply(sampleSize,1,min) >= 100,])
-sampleSize
-dimnames(sampleSize)
-sampleSize <- table(calCoast$county, calCoast$year)#
-sampleSize <- sampleSize[apply(sampleSize,1,min) >= 100,]
-dimnames(sampleSize)
-rarefiedDiversity <- data.frame(matrix(NA, nrow=nrow(sampleSize), ncol=ncol(sampleSize), dimnames=dimnames(sampleSize)))
-rarefiedDiversity
-i
-i <- 1
-sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])
-sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])#
-	rarefied <- rarecurve(sampleMatrix, 1)
-rarefied
-sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])#
-	rarefied <- rarecurve(sampleMatrix, 1)
-sampleSize[i,]
-min(sampleSize[i,])
-minSampleSize
-min(sampleSize)
-?rarecurv
-?rarecurve
-minSample <- min(sampleSize[i,])#
-	sampleMatrix <- table(calCoast$year[calCoast$county==rownames(sampleSize)[i]], calCoast$species_id[calCoast$county==rownames(sampleSize)[i]])#
-	rarefied <- rarefy(sampleMatrix, minSample)
-rarefied
-rarefied[[1]]
-rarefied[1]
-as.numeric(rarefied)
+sampleSize <- sampleSize[apply(sampleSize,1,min) >= 100,]#
+#
 rarefiedDiversity <- data.frame(matrix(NA, nrow=nrow(sampleSize), ncol=ncol(sampleSize), dimnames=dimnames(sampleSize)))#
 rarefiedDiversityEqSamp <- rarefiedDiversity#
 for(i in 1:nrow(sampleSize)) {#
@@ -311,300 +227,8 @@ for(i in 1:nrow(sampleSize)) {#
 	rarefiedDiversity[i,] <- as.numeric(rarefied)#
 	rarefied <- rarefy(sampleMatrix, min(sampleSize))#
 	rarefiedDiversityEqSamp[i,] <- as.numeric(rarefied)#
-}
-rarefiedDiversity
-barplot(rarefiedDiversity)
-class(rarefiedDiversity)
-barplot(matrix(rarefiedDiversity))
-class(rarefiedDiversity)
-length(rarefiedDiversity)
-nrow(rarefiedDiversity)
-ncol(rarefiedDiversity)
-class(rarefiedDiversity$X2016)
-?barplot
-barplot(rarefiedDiversity[1,])
-barplot(rarefiedDiversity[1,])
-barplot(as.vector(rarefiedDiversity[1,]))
-rarefiedDiversity[1,]
-class(rarefiedDiversity[1,])
-barplot(as.numeric(rarefiedDiversity[1,]))
-barplot(as.numeric(rarefiedDiversity[1,]), horiz=TRUE)
-barplot(as.numeric(rarefiedDiversityEqSamp[1,]), horiz=TRUE)
-barplot(as.numeric(rarefiedDiversityEqSamp[1,]))
-getwd()
-2:1
-nrow(sampleSize)
-?matrix
-matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2)
-plot(coastalCounties, col=c('blue','lightblue'))
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col=c('blue','lightblue'))#
-plot(coastalCounties, add=TRUE)
-plot(coastalCounties[is.element(coastalCounties$NAME, focalCounties),], col=c('blue','lightblue'))#
-plot(coastalCounties, add=TRUE)
-i %% 2
-i %% 2
-1:9 %% 2
-1:9 %% 2 + 1
-?spTransofrm
-?spTransoform
-?spTransform
-class(counties)
-plot(coastalCounties, border=NA)
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2), widths=c(0.4, 0.6), byrow=FALSE)#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampeSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == colnames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-dev.off()
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampeSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == colnames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-dev.off()
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == colnames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-dev.off()
-i
-colnames(sampleSize)[i]
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(2:(nrow(sampleSize)+1),rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-dev.off()
-i <- 1
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]))
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]));box()
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]), );box()
-?barplot
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue");box()
-?par
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue", xaxs="i")
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue", xaxs="s")
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col="blue", xaxs="r")
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])#
-}#
-dev.off()
-barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
-par(las=1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
-?par
-par(las=1, c(4, 4, 3, 0.5) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
-par(las=1, c(4, 4, 3, 0.5) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
-par(las=1, c(2, 4, 3, 0.5) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
-par(las=1, c(2, 4, 3, 0.5) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i])
-par(las=1, c(2, 4, 3, 0.5) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
-par(las=1, c(2, 4, 2, 0) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
-par(las=1, mar=c(2, 4, 2, 0) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
-par(las=1, mar=c(4, 4, 2, 0) + 0.1)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
-par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Number of species")
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=2016:2018, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="Estimated species")#
-}#
-dev.off()
-max(sampleSize)
-max(rarefiedDiversityEqSamp)
-max(rarefiedDiversity)
-matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)),rep(nrow(sampleSize)+2,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=2, byrow=FALSE)
-matrix(c((nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)),rep(nrow(sampleSize)+2,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
-matrix(c((rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c((rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	if(i == 1) {#
-		xlabels <- 2016:2018#
-	} else {#
-		xlabels <- NA#
-	}#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
-}#
-dev.off()
-layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	if(i == 1) {#
-		xlabels <- 2016:2018#
-	} else {#
-		xlabels <- NA#
-	}#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
-}#
-dev.off()
-dev.off()
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	if(i == 1) {#
-		xlabels <- 2016:2018#
-	} else {#
-		xlabels <- NA#
-	}#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
-}#
-dev.off()
-matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize)), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(rep(nrow(sampleSize)+2),nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	if(i == 1) {#
-		xlabels <- 2016:2018#
-	} else {#
-		xlabels <- NA#
-	}#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
-}#
-dev.off()
-matrix(c(rep(nrow(sampleSize)+2),nrow(sampleSize)),nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE)
-nrow(sampleSize)+1):2
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	if(i == 1) {#
-		xlabels <- 2016:2018#
-	} else {#
-		xlabels <- NA#
-	}#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
-}#
-dev.off()
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 4, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	if(i == 1) {#
-		xlabels <- 2016:2018#
-	} else {#
-		xlabels <- NA#
-	}#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="")#
-}#
-dev.off()
-pretty(range(rarefiedDiversityEqSamp))
-pretty(c(0,max(rarefiedDiversityEqSamp)))
-c(0,max(rarefiedDiversityEqSamp))
-plot(1:10, type="n", axes=FALSE, xlab="",yalb="")
-par(mar=c(0, 0, 0, 0) + 0.1)#
-plot(1:10, type="n", axes=FALSE, xlab="",ylab="")
-par(mar=c(0, 0, 0, 0) + 0.1)#
-plot(1:10, type="n", axes=FALSE, xlab="",ylab="")#
-text(5,5, "Estimated number of Species", cex=1.25, srt=90)
-plotColors <- c('blue','lightblue')#
-pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
-layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
-plot(coastalCounties, border=NA)#
-for(i in 1:nrow(sampleSize)) {#
-	plot(coastalCounties[coastalCounties$NAME == rownames(sampleSize)[i],], col=plotColors[i %% 2 + 1], border=NA, add=TRUE)#
-}#
-plot(coastalCounties, add=TRUE)#
-#
-for(i in 1:nrow(sampleSize)) {#
-	par(las=1, mar=c(4, 2, 2, 0) + 0.1, cex.axis=1.25, cex.lab=1.25)#
-	if(i == 1) {#
-		xlabels <- 2016:2018#
-	} else {#
-		xlabels <- NA#
-	}#
-	barplot(as.numeric(rarefiedDiversityEqSamp[i,]), names.arg=xlabels, col=plotColors[i %% 2 + 1], main=rownames(sampleSize)[i], ylab="", ylim=c(0,max(rarefiedDiversityEqSamp)))#
 }#
 #
-par(mar=c(0, 0, 0, 0) + 0.1)#
-plot(1:10, type="n", axes=FALSE, xlab="",ylab="")#
-text(5,5, "Estimated number of Species", cex=1.25, srt=90)#
-dev.off()
 plotColors <- c('blue','lightblue')#
 pdf(file="figures/countyRarefaction.pdf", height=10, width=8)#
 layout(matrix(c(rep(nrow(sampleSize)+2,nrow(sampleSize)),(nrow(sampleSize)+1):2,rep(1,nrow(sampleSize))), nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.1, 0.3, 0.6))#
@@ -629,4 +253,456 @@ par(mar=c(0, 0, 0, 0) + 0.1)#
 plot(1:10, type="n", axes=FALSE, xlab="",ylab="")#
 text(5,5, "Estimated number of Species", cex=1.25, srt=90)#
 dev.off()
-q()
+head(calCoast)
+sort(table(calCoast$species_id))
+hist(table(calCoast$species_id))
+hist(log10(table(calCoast$species_id)))
+names(table(calCoast$species_id))
+names(table(calCoast$species_id)[table(calCoast$species_id)>=100])
+abund <- subset(calcoast, is.element(species_id, names(table(calCoast$species_id)[table(calCoast$species_id)>=100])))
+abund <- subset(calCoast, is.element(species_id, names(table(calCoast$species_id)[table(calCoast$species_id)>=100])))
+nrow(abound)
+nrow(abund)
+speciesCounts <- table(calCoast$species_id)#
+abund <- subset(calCoast, is.element(species_id, names(speciesCounts[speciesCounts >= 100])))
+nrow(abund)
+speciesCounts <- table(calCoast$species_id)#
+mostAbund <- names(speciesCounts[speciesCounts >= 100])#
+abund <- subset(calCoast, is.element(species_id, mostAbund))
+myColors <- rainbow(length(mostAbund)+1)[-1]
+myColors
+range(abund$lat)
+myBreaks <- seq(32.5, 42, 0.5)
+myBreaks
+i <- 1
+temp <- subset(abund, species_id == mostAbund[i])
+tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)
+tempHist
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,50), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.5)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$counts, col=myColors[i])#
+#
+}#
+dev.off()
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,50), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.5)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+dev.off()
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.5)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+dev.off()
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.5)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+dev.off()
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.5)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+abline(v=c(37.5, 33.75)#
+#
+dev.off()
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.5)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+abline(v=c(37.5, 33.75))#
+#
+dev.off()
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.5)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+abline(v=c(37.25, 33.75))#
+#
+dev.off()
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.25)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+abline(v=c(37.25, 33.75))#
+#
+dev.off()
+myColors <- rainbow(length(mostAbund)+1)[-1]#
+pdf(file="figures/latDistributions.pdf", height=6, width=9)#
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")#
+myBreaks <- seq(32.5, 42, 0.1)#
+for(i in 1:length(mostAbund)) {#
+	temp <- subset(abund, species_id == mostAbund[i])#
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)#
+	lines(tempHist$mids, tempHist$density, col=myColors[i])#
+#
+}#
+abline(v=c(37.25, 33.75))#
+#
+dev.off()
+hist(calCoast$lat, breaks=myBreaks)
+dev.off()
+dev.off()
+hist(calCoast$lat, breaks=myBreaks)
+paste('lat',myBreaks)
+samplingEffort <- data.frame(matrix(NA, nrow=length(myBreaks), ncol=3, dimnames=list(paste('lat',myBreaks), paste('Y',2016:2018))))
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks), ncol=3, dimnames=list(paste('lat',myBreaks), paste('Y',2016:2018))))
+samplingEffort
+# sampling intensity map#
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks), ncol=3, dimnames=list(paste('lat',myBreaks), paste('Y',2016:2018))))#
+rawDiversity <- samplingEffort
+head(myBreaks)
+myBreaks
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1]), paste('Y',2016:2018))))
+i <- 1
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1]), paste('Y',2016:2018))))#
+rawDiversity <- samplingEffort
+i <- 1
+temp <- subset(calCoast, lat>myBreaks[i] & lat <= myBreaks[i+1])
+head(calCoast)
+head(calCoast$lat)
+temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])
+head(temp)
+range(temp$lat)
+tempSamp <- table(temp$year)
+tempSamp
+as.numeric(tempSamp)
+samplingEffort[i,] <- as.numeric(table(temp$year))
+head(samplingEffort)
+tail(samplingEffort)
+tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))})
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1]), paste('Y',2016:2018))))#
+rawDiversity <- samplingEffort#
+for(i in nrow(samplingEffort)) {#
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])#
+	samplingEffort[i,] <- as.numeric(table(temp$year))#
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))#
+}#
+p
+rawDiversity
+i
+# sampling intensity map#
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1]), paste('Y',2016:2018))))#
+rawDiversity <- samplingEffort#
+for(i in 1:nrow(samplingEffort)) {#
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])#
+	samplingEffort[i,] <- as.numeric(table(temp$year))#
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))#
+}
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1]), paste('Y',2016:2018))))#
+rawDiversity <- samplingEffort#
+for(i in 1:nrow(samplingEffort)) {#
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])#
+	temp$year <- factor(temp$year, levels=2016:2018)#
+	samplingEffort[i,] <- as.numeric(table(temp$year))#
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))#
+}
+rawDiversity
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- data.frame(matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1],sep=""), paste('Y',2016:2018,sep=""))))#
+rawDiversity <- samplingEffort#
+for(i in 1:nrow(samplingEffort)) {#
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])#
+	temp$year <- factor(temp$year, levels=2016:2018)#
+	samplingEffort[i,] <- as.numeric(table(temp$year))#
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))#
+}
+rawDiversity
+barplot(rawDiversity)
+barplot(matrix(rawDiversity))
+# sampling intensity map#
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1],sep=""), paste('Y',2016:2018,sep="")))#
+rawDiversity <- samplingEffort#
+for(i in 1:nrow(samplingEffort)) {#
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])#
+	temp$year <- factor(temp$year, levels=2016:2018)#
+	samplingEffort[i,] <- as.numeric(table(temp$year))#
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))#
+}
+rawDiversity
+barplot(rawDiversity'')
+barplot(rawDiversity)
+barplot(t(rawDiversity))
+barplot(t(rawDiversity), horiz=T)
+?barolot
+?barplot
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rawDiversity),0))
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rawDiversity,na.rm=T),0))
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0))
+plot(cal)
+plot(cal, fill='green')
+plot(cal, col='green')
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray")
+)
+)
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')
+pdf(file="figures/samplingEffort.pdf", height=10, width=8)#
+layout(matrix(2:1, nrow=nrow(sampleSize), ncol=3, byrow=FALSE), widths=c(0.4, 0.6))#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=8)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+dev.off()
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0))
+# sampling intensity map#
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1],sep=""), paste('Y',2016:2018,sep="")))#
+rawDiversity <- samplingEffort#
+for(i in 1:nrow(samplingEffort)) {#
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])#
+	temp$year <- factor(temp$year, levels=2016:2018)#
+	samplingEffort[i,] <- as.numeric(table(temp$year))#
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))#
+}#
+pdf(file="figures/samplingEffort.pdf", height=10, width=8)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+#
+# data#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0))#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=10)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+#
+# data#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0))#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+#
+# data#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0))#
+dev.off()
+?barplot
+barCol <- ("#4d4d4d", "#aeaeae","#e6e6e6")
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=NULL)
+barCol <- c("#4d4d4d", "#aeaeae","#e6e6e6")
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=NULL)
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=NA)
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=NULL)
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=NULL, legend.text=2016:1018)
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=NULL, legend.text=2016:2018)
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg="")
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)))
+legend("topleft", legend=2016:1018, bty="n", fill=barCol)
+# data#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)))#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)
+barCol <- c("#4d4d4d", "#aeaeae","#e6e6e6")#
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+#
+# data#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+?par
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,1,4,0)=0.1)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+#
+# data#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+# sampling intensity map#
+myBreaks <- seq(32.5, 42, 0.5)#
+samplingEffort <- matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1],sep=""), paste('Y',2016:2018,sep="")))#
+rawDiversity <- samplingEffort#
+for(i in 1:nrow(samplingEffort)) {#
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])#
+	temp$year <- factor(temp$year, levels=2016:2018)#
+	samplingEffort[i,] <- as.numeric(table(temp$year))#
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))#
+}#
+barCol <- c("#4d4d4d", "#aeaeae","#e6e6e6")#
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray')#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="gray")#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1, cex.axis=1.25, cex.lab=1.25)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1, cex.axis=1.25, cex.lab=1.25)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1, cex.axis=1.25, cex.lab=1.25)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1, cex.axis=1.25, cex.lab=1.25)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1, cex.axis=1.5, cex.lab=1.5)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1, cex.axis=5, cex.lab=1.5)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)=0.1)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")#
+#
+# data#
+par(mar=c(5,1,4,0)=0.1)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0, cex.axis=1.5, cex.lab=1.5)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)#
+dev.off()
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)#
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))#
+par(mar=c(5,0,4,0)+0.1)#
+# map#
+plot(cal)#
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")#
+#
+# data#
+par(mar=c(5,1,4,0)+0.1, cex.axis=1.5, cex.lab=1.5)#
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)#
+legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)#
+dev.off()

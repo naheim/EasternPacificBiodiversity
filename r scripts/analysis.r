@@ -122,6 +122,68 @@ dev.off()
 
 
 
+## lat var in most abundant species
+speciesCounts <- table(calCoast$species_id)
+mostAbund <- names(speciesCounts[speciesCounts >= 100])
+abund <- subset(calCoast, is.element(species_id, mostAbund))
+
+myColors <- rainbow(length(mostAbund)+1)[-1]
+pdf(file="figures/latDistributions.pdf", height=6, width=9)
+plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")
+myBreaks <- seq(32.5, 42, 0.1)
+for(i in 1:length(mostAbund)) {
+	temp <- subset(abund, species_id == mostAbund[i])
+	tempHist <- hist(temp$lat, breaks=myBreaks, plot=FALSE)
+	lines(tempHist$mids, tempHist$density, col=myColors[i])
+
+}
+abline(v=c(37.25, 33.75))
+
+dev.off()
+
+
+
+
+# sampling intensity map
+myBreaks <- seq(32.5, 42, 0.5)
+samplingEffort <- matrix(0, nrow=length(myBreaks)-1, ncol=3, dimnames=list(paste('lat',myBreaks[-1],sep=""), paste('Y',2016:2018,sep="")))
+rawDiversity <- samplingEffort
+for(i in 1:nrow(samplingEffort)) {
+	temp <- subset(calCoast, calCoast$lat > myBreaks[i] & calCoast$lat <= myBreaks[i+1])
+	temp$year <- factor(temp$year, levels=2016:2018)
+	samplingEffort[i,] <- as.numeric(table(temp$year))
+	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))
+}
+barCol <- c("#4d4d4d", "#aeaeae","#e6e6e6")
+pdf(file="figures/samplingEffort.pdf", height=10, width=15)
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))
+par(mar=c(5,0,4,0)+0.1)
+# map
+plot(cal)
+plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")
+
+# data
+par(mar=c(5,1,4,0)+0.1, cex.axis=1.5, cex.lab=1.5)
+barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)
+legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)
+
+
+dev.off()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
