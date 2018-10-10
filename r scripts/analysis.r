@@ -154,7 +154,9 @@ for(i in 1:nrow(samplingEffort)) {
 	samplingEffort[i,] <- as.numeric(table(temp$year))
 	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))
 }
-barCol <- c("#ffeda0", "#feb24c","#f03b20")
+barCol <- c("#d7191c", "#fdae61","#2c7bb6")
+calCoast$yearColor <- barCol[match(calCoast$year, 2016:2018)]
+calCoast <- calCoast[sample(1:nrow(calCoast), nrow(calCoast), replace=FALSE),]
 
 # raw diversity
 pdf(file="figures/rawDiversityLat.pdf", height=10, width=15)
@@ -163,6 +165,7 @@ par(mar=c(5,0,4,0)+0.1)
 # map
 plot(coastalCounties, col='light gray', border="dark gray")
 plot(cal, add=TRUE)
+points(calCoast, pch=16, col=calCoast$yearColor, cex=0.5)
 
 # data
 par(mar=c(5,1,4,0)+0.1, cex.axis=1.5, cex.lab=1.5)
@@ -181,6 +184,7 @@ par(mar=c(5,0,4,0)+0.1)
 # map
 plot(coastalCounties, col='light gray', border="dark gray")
 plot(cal, add=TRUE)
+points(calCoast, pch=16, col=calCoast$yearColor, cex=0.5)
 
 # data
 par(mar=c(5,1,4,0)+0.1, cex.axis=1.5, cex.lab=1.5)
