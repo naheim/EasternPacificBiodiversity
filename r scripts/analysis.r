@@ -14,6 +14,7 @@ library(vegan)
 library(maps)
 require(rgdal)
 require(rgeos)
+library(RColorBrewer)
 
 # mapping info 
 crswgs84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs") # map projection
@@ -128,7 +129,7 @@ mostAbund <- names(speciesCounts[speciesCounts >= 100])
 abund <- subset(calCoast, is.element(species_id, mostAbund))
 
 myColors <- rainbow(length(mostAbund)+1)[-1]
-pdf(file="figures/latDistributions.pdf", height=6, width=9)
+png(file="figures/latDistributions.png", height=6, width=9, units="in", res=100)
 plot(1:10, type="n", xlim=range(abund$lat), ylim=c(0,1.5), xlab="Latitude", ylab="Number of observations")
 myBreaks <- seq(32.5, 42, 0.1)
 for(i in 1:length(mostAbund)) {
@@ -138,7 +139,6 @@ for(i in 1:length(mostAbund)) {
 
 }
 abline(v=c(37.25, 33.75))
-
 dev.off()
 
 
@@ -193,6 +193,50 @@ matlines(samplingEffort, matrix(myBreaks[-1]-0.25, ncol=3, nrow=nrow(samplingEff
 
 #barplot(t(samplingEffort), horiz=T, xlim=c(max(rowSums(samplingEffort,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(samplingEffort)), space=0)
 legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)
+dev.off()
+
+
+
+# species ranges
+mostAbund <- names(speciesCounts[speciesCounts >= 75])
+abund <- subset(calCoast, is.element(species_id, mostAbund))
+phyla <- c("Annelida","Arthropoda","Chordata","Cnidaria","Echinodermata","Mollusca","Chlorophyta","Ochrophyta","Rhodophyta","Tracheophyta")
+phyCols <- c(brewer.pal(7,'OrRd')[-1], brewer.pal(5,'Greens')[-1])
+abund$phylumColor <- phyCols[match(abund$phylum, phyla)]
+abund$phylumColor2 <- "red"
+abund$phylumColor2[is.element(abund$phylum, phyla[7:10])] <- "#037200"
+abund <- abund[sample(1:nrow(abund), nrow(abund), replace=FALSE),]
+
+latRanges <- data.frame(do.call(rbind, tapply(abund$lat, abund$species_id, range)))
+colnames(latRanges) <- c("minLat","maxLat")
+latRanges$phylum <- factor(calCoast$phylum[match(rownames(latRanges), calCoast$species_id)], levels=phyla)
+latRanges$phylumColor <- phyCols[match(latRanges$phylum, phyla)]
+latRanges$phylumColor2 <- "red"
+latRanges$phylumColor2[is.element(latRanges$phylum, phyla[7:10])] <- "#037200"
+latRanges <- latRanges[order(latRanges$phylum, latRanges$minLat, latRanges$maxLat),]
+latRanges$index <- 1:nrow(latRanges)
+
+png(file="figures/latRanges.png", height=10, width=21, units="in", res=100)
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.6, 0.4))
+par(mar=c(5,0,4,0)+0.1)
+# map
+plot(coastalCounties, col='light gray', border="dark gray")
+plot(cal, add=TRUE)
+points(abund, pch=16, col=abund$phylumColor2, cex=1)
+
+# data
+par(mar=c(5,0,4,0)+0.1, cex.axis=1.5, cex.lab=1.5)
+plot(1:nrow(latRanges), type="n", xlim=c(0,nrow(latRanges)), ylim=range(calCoast$lat), xlab="", ylab="", axes=FALSE, main="Species Latitudinal Range")
+arrows(1:nrow(latRanges), latRanges$minLat, 1:nrow(latRanges), latRanges$maxLat, angle=90, code=3, col=latRanges$phylumColor2, length=0.05)
+initPhy <- phyla[1]
+for(i in 1:nrow(latRanges)) {
+	if(as.character(latRanges$phylum[i]) != initPhy) {
+		abline(v=(i-0.5), lty=2, lwd=1.5)
+		initPhy <- as.character(latRanges$phylum[i])
+	}
+}
+mtext(phyla, side=1, at=tapply(latRanges$index, latRanges$phylum, mean), line=rep(c(0.75,1.85), length.out=10), font=2)
+#legend("topleft", legend=phyla, bty="n", fill=phyCols, cex=1.5)
 dev.off()
 
 
