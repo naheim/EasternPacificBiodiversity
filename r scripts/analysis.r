@@ -154,24 +154,42 @@ for(i in 1:nrow(samplingEffort)) {
 	samplingEffort[i,] <- as.numeric(table(temp$year))
 	rawDiversity[i,] <- as.numeric(tapply(temp$species_id, temp$year, function(x){return(length(unique(x)))}))
 }
-barCol <- c("#4d4d4d", "#aeaeae","#e6e6e6")
-pdf(file="figures/samplingEffort.pdf", height=10, width=15)
+barCol <- c("#ffeda0", "#feb24c","#f03b20")
+
+# raw diversity
+pdf(file="figures/rawDiversityLat.pdf", height=10, width=15)
 layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))
 par(mar=c(5,0,4,0)+0.1)
 # map
-plot(cal)
-plot(coastalCounties, add=TRUE, col='light gray', border="dark gray")
+plot(coastalCounties, col='light gray', border="dark gray")
+plot(cal, add=TRUE)
 
 # data
 par(mar=c(5,1,4,0)+0.1, cex.axis=1.5, cex.lab=1.5)
-barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)
+plot(1:10, type="n", xlim=c(max(rawDiversity,na.rm=T),0), ylim=range(myBreaks), xlab="Number of species", ylab="", yaxt="n", frame.plot=FALSE)
+matlines(rawDiversity, matrix(myBreaks[-1]-0.25, ncol=3, nrow=nrow(rawDiversity), byrow=FALSE), col='black', bg=barCol, pch=21, cex=1.5, type="o", lty=1)
+
+#barplot(t(rawDiversity), horiz=T, xlim=c(max(rowSums(rawDiversity,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(rawDiversity)), space=0)
 legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)
-
-
 dev.off()
 
 
+# number of occurrences
+pdf(file="figures/samplingEffortLat.pdf", height=10, width=15)
+layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))
+par(mar=c(5,0,4,0)+0.1)
+# map
+plot(coastalCounties, col='light gray', border="dark gray")
+plot(cal, add=TRUE)
 
+# data
+par(mar=c(5,1,4,0)+0.1, cex.axis=1.5, cex.lab=1.5)
+plot(1:10, type="n", xlim=c(max(samplingEffort,na.rm=T),0), ylim=range(myBreaks), xlab="Number of observations", ylab="", yaxt="n", frame.plot=FALSE)
+matlines(samplingEffort, matrix(myBreaks[-1]-0.25, ncol=3, nrow=nrow(samplingEffort), byrow=FALSE), col='black', bg=barCol, pch=21, cex=1.5, type="o", lty=1)
+
+#barplot(t(samplingEffort), horiz=T, xlim=c(max(rowSums(samplingEffort,na.rm=T)),0), xlab="Number of species", col=barCol, names.arg=rep(NA,nrow(samplingEffort)), space=0)
+legend("topleft", legend=2016:2018, bty="n", fill=barCol, cex=1.5)
+dev.off()
 
 
 
