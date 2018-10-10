@@ -12,9 +12,9 @@
 
 #### Number of Observations, Snapshot Cal Coast 2016-2018
 ![number of observations](figures/samplingEffortLat.png)
-*The number of research-grade species obesrvations from the three years of Snapshot Cal Coast. Points on map are individual observations, color coded by year. The plot at the left shows the number of observations made in each year within 0.5-degree latitudinal bins. Map and plot's y-axis are on the same scale.*
+*The number of research-grade species obesrvations from the three years of Snapshot Cal Coast. Points on map are individual observations, color coded by year. The plot at the left shows the number of observations made in each year within 0.5-degree latitudinal bins. Map and plot y-axes are on the same scale.*
 <hr />
 
 ![number of species](figures/rawDiversityLat.png)
-*The number of research-grade species identified during the three years of Snapshot Cal Coast. Points on map are individual observations, color coded by year. The plot at the left shows the number of species identified in each year within 0.5-degree latitudinal bins. Map and plot's y-axis are on the same scale.*
+*The number of research-grade species identified during the three years of Snapshot Cal Coast. Points on map are individual observations, color coded by year. The plot at the left shows the number of species identified in each year within 0.5-degree latitudinal bins. Map and plot y-axes are on the same scale.*
 <hr />
