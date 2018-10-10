@@ -159,7 +159,7 @@ calCoast$yearColor <- barCol[match(calCoast$year, 2016:2018)]
 calCoast <- calCoast[sample(1:nrow(calCoast), nrow(calCoast), replace=FALSE),]
 
 # raw diversity
-pdf(file="figures/rawDiversityLat.pdf", height=10, width=15)
+png(file="figures/rawDiversityLat.png", height=10, width=15, units="in", res=100)
 layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))
 par(mar=c(5,0,4,0)+0.1)
 # map
@@ -178,7 +178,7 @@ dev.off()
 
 
 # number of occurrences
-pdf(file="figures/samplingEffortLat.pdf", height=10, width=15)
+png(file="figures/samplingEffortLat.png", height=10, width=15, units="in", res=100)
 layout(matrix(2:1, nrow=1, ncol=2, byrow=FALSE), widths=c(0.4, 0.6))
 par(mar=c(5,0,4,0)+0.1)
 # map
