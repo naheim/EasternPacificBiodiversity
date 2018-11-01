@@ -22,4 +22,4 @@
 
 #### Latitudinal Ranges
 ![latitudinal ranges](figures/latRanges.png)
-*Latitudinal ranges of the 53 species with at least 75 observations cumulated across the three three years of Snapshot Cal Coast. Points on map are individual observations, color coded by animals (red) and 'plants' (green). The latitudinal ranges are grouped by phylum and demarcated by the dashed vertical lines. Map and plot y-axes are on the same scale.*
+*Latitudinal ranges of the 53 species with at least 75 observations, cumulatively across the three three years of Snapshot Cal Coast. Points on map are individual observations, color coded by animals (red) and 'plants' (green). The latitudinal ranges are grouped by phylum and demarcated by the dashed vertical lines. Map and plot y-axes are on the same scale.*
