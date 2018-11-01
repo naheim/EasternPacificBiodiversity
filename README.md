@@ -1,5 +1,5 @@
 # Snapshot Cal Coast
-![image](images/calcoast_oceanbeach.jpg)
+![image](images/calcoast_santacruz.png)
 ## Exploratory analysis, Snapshot Cal Coast 2016-2018
 
 ### Data Sources
