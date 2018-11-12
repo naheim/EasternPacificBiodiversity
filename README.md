@@ -1,9 +1,11 @@
-# Snapshot Cal Coast
-![image](images/calcoast_santacruz.png)
-## Exploratory analysis, Snapshot Cal Coast 2016-2018
+# Eastern Pacific Coastal Marine Biodiversity
+![image](images/santacruz_banner.png)
+## Exploratory analysis, Eastern Pacific benthic biodiveristy using citizen science data
+
+### Initial exploration of California from Snapshot Cal Coast 2016-2018
 
 ### Data Sources
-* [California Marine Protected Areas (GIS Data)](https://data.ca.gov/dataset/california-marine-protected-areas-ds582)
+<!-- * [California Marine Protected Areas (GIS Data)](https://data.ca.gov/dataset/california-marine-protected-areas-ds582) -->
 * [California Counties (GIS Data)](https://data.ca.gov/dataset/ca-geographic-boundaries)
 * [California State Land Boundaries (GIS Data)](https://www.census.gov/geo/maps-data/data/cbf/cbf_state.html)
 * [Snapshot Cal Coast Observations (iNaturalist API)](https://api.inaturalist.org/v1/docs/)
