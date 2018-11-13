@@ -8,9 +8,16 @@ if(is.element(Sys.info()["nodename"], c("es-naheim.local","sr12-cf96e71ca1.stanf
 Sys.setenv(TZ="America/Los_Angeles")
 
 source(paste(my.root,"/Box Sync/Includes/myFunctions.r", sep=""));
-setwd(paste(my.root,"/Box Sync/git/snapshotcalcoast", sep=""));
+setwd(paste(my.root,"/Box Sync/git/EasternPacificBiodiversity", sep=""));
 
 library(jsonlite)
+library(rgdal)
+
+## get Eastern Pacific KMZ outline
+unzip(zipfile = "data files/EastPacCoast.kmz", exdir = "data files", overwrite = TRUE)
+import <- ogrListLayers("data files/doc.kml")
+eastPac = readOGR("data files/doc.kml","EastPacCoast.kmz") 
+
 
 ## get list of snapshot cal coast projects
 projNames <- c("Snapshot Cal Coast 2016","Snapshot Cal Coast 2017","Snapshot Cal Coast 2018")
