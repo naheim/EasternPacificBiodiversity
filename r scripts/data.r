@@ -20,11 +20,11 @@ iNatToken <- fromJSON(paste(my.root,"/Box Sync/Includes/iNatToken.txt", sep=""))
 unzip(zipfile = "data files/EastPacCoast.kmz", exdir = "data files", overwrite = TRUE)
 import <- ogrListLayers("data files/doc.kml")
 eastPac = readOGR("data files/doc.kml","EastPacCoast.kmz") 
-
+eastPacBBox <- bbox(eastPac)
 
 ## get list of snapshot cal coast projects
 projNames <- c("Snapshot Cal Coast 2016","Snapshot Cal Coast 2017","Snapshot Cal Coast 2018")
-projects <- fromJSON(URLencode('http://api.inaturalist.org/v1/projects?q=snapshot cal coast&per_page=200'))$results
+#projects <- fromJSON(URLencode('http://api.inaturalist.org/v1/projects?q=snapshot cal coast&per_page=200'))$results
 
 # columns I don't want to keep
 dropColumns <- c('time_observed_at','annotations','photos','created_at_details','tags','created_time_zone','quality_metrics','flags','description','time_zone_offset','project_ids_with_curator_id','observed_o','observed_on_string','outlinks','sounds','ofvs','preferences','faves','non_owner_ids','project_ids_without_curator_id','votes','observation_photos','project_observations','identifications','geojson','reviewed_by','comments','project_ids')
@@ -78,7 +78,7 @@ for(j in 1:3) {
 	projId <- subset(projects, title==projNames[j])$id
 
 	## get number of observations and pages
-	nObs <- fromJSON(URLencode(paste('http://api.inaturalist.org/v1/observations?project_id=',projId,'&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&per_page=1&order=desc&order_by=created_at&quality_grade=research', sep="")))$total_results
+	nObs <- fromJSON(URLencode(paste('http://api.inaturalist.org/v1/observations?access_token=',iNatToken,'&swlat=',eastPacBBox[2,1],'&swlng=',eastPacBBox[1,1],'&nelat=',eastPacBBox[2,2],'&nelng=',eastPacBBox[1,2],'&has[]=geo&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&per_page=1&order=desc&order_by=created_at', sep="")))$total_results
 	if(nObs %% 200 == 0) {
 		nPages <- nObs/200
 	} else {
@@ -88,7 +88,7 @@ for(j in 1:3) {
 
 	## download data
 	for(i in 1:nPages) {
-		obs <- fromJSON(URLencode(paste("http://api.inaturalist.org/v1/observations?project_id=",projId,"&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&page=",i,"&per_page=200&order=desc&order_by=created_at&quality_grade=research", sep="")))
+		obs <- fromJSON(URLencode(paste('http://api.inaturalist.org/v1/observations?access_token=',iNatToken,'&swlat=',eastPacBBox[2,1],'&swlng=',eastPacBBox[1,1],'&nelat=',eastPacBBox[2,2],'&nelng=',eastPacBBox[1,2],'&has[]=geo&rank=tribe,subtribe,genus,genushybrid,species,hybrid,subspecies,variety,form&per_page=200&page=',i,'&order=desc&order_by=created_at', sep="")))
 		obs$results <- formatColumns(obs$results, dropColumns)
 		
 		if(j == 1 & i == 1) {

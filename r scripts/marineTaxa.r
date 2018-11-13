@@ -9,6 +9,40 @@ nonMarinePlant <- c(
 	
 )
 
+# non-marine annelids
+nonMarinePolychaeteFamilies <- c(
+	Aeolosomatidae,
+)
+
+nonMarinePolychaeteGenera <- c(
+	Aeolosoma,Rheomorpha,Histricosoma,
+)
+
+ 
+Ampharetidae--6 spp
+Capitellidae--6 spp
+Cirratulidae--3 spp
+Eunicidae
+Goniadidae
+Histriobdellidae 
+Lumbrineridae
+Maldanidae
+Nephtyidae
+Nereididae
+Nerillidae
+Onuphidae
+Orbiniidae
+Paraonidae
+Phyllodocidae
+Pilargidae
+Pisionidae
+Potamodrilidae
+Protodrilidae
+Sabellidae
+Serpulidae
+Spionidae
+Sternaspidae
+Nereidiformia
 
 
 
