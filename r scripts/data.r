@@ -13,6 +13,9 @@ setwd(paste(my.root,"/Box Sync/git/EasternPacificBiodiversity", sep=""));
 library(jsonlite)
 library(rgdal)
 
+## get iNaturalist Token
+iNatToken <- fromJSON(paste(my.root,"/Box Sync/Includes/iNatToken.txt", sep="")) 
+
 ## get Eastern Pacific KMZ outline
 unzip(zipfile = "data files/EastPacCoast.kmz", exdir = "data files", overwrite = TRUE)
 import <- ogrListLayers("data files/doc.kml")
